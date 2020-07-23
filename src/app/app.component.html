@@ -30,13 +30,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="">หน้าแรก<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="admin">หน้าแรก<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="">ค้นหา<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="admin/search">ค้นหา<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="">จัดการข้อมูลหอพัก<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="admin/manage">จัดการข้อมูลหอพัก<span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
@@ -53,18 +53,44 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/user">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="user">Home<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" (click)="logout()">Logout</a>
-        </div>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="user/search">search<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="user/reserInformation">ReserInformation<span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
+  <ul class="nav navbar-nav navbar-right">
+    <a class="nav-link" routerLink="user/profile">Profile<span class="sr-only">(current)</span></a>
+  </ul>
 </nav>
+
+<nav *ngIf="userType === 'dorm'" class="navbar navbar-expand-lg navbar-light bg-secondary bottom-2">
+  <a class="navbar-brand" routerLink="/dorm">DORM</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="dorm">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="dorm/mange">Manage<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="dorm/checkPayment">Check Payment<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  <ul class="nav navbar-nav navbar-right">
+    <a class="nav-link" routerLink="dorm/profile">Profile<span class="sr-only">(current)</span></a>
+  </ul>
+</nav>
+
 <router-outlet></router-outlet>

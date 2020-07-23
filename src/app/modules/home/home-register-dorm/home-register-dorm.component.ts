@@ -18,12 +18,15 @@ export class HomeRegisterDormComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerFormDorm = this.fb.group({
-      user_name: ['', [Validators.required, Validators.minLength(4)]],
-      user_password: ['', [Validators.required, Validators.minLength(4)]],
-      user_citizen: ['', [Validators.required, Validators.minLength(4)]],
-      user_email: ['', [Validators.required, Validators.minLength(4)]],
-      user_gender: ['', [Validators.required]],
-      user_tel: ['', [Validators.required, Validators.minLength(10)]],
+      dorm_owner: ['', [Validators.required]],
+      dorm_password: ['', [Validators.required, Validators.minLength(8)]],
+      dorm_name: ['', [Validators.required]],
+      dorm_citizen: ['', [Validators.required, Validators.minLength(13)]],
+      dorm_tel: ['', [Validators.required, Validators.minLength(10)]],
+      dorm_address: ['', [Validators.required]],
+      dorm_numbank: ['', [Validators.required, Validators.minLength(10)]],
+      dorm_namebank: ['', [Validators.required]],
+      dorm_img: ['', [Validators.required ]],
     });
   }
 

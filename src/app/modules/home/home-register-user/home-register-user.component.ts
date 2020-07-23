@@ -18,10 +18,10 @@ export class HomeRegisterUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerFormUser = this.fb.group({
-      user_name: ['', [Validators.required, Validators.minLength(4)]],
-      user_password: ['', [Validators.required, Validators.minLength(4)]],
-      user_citizen: ['', [Validators.required, Validators.minLength(4)]],
-      user_email: ['', [Validators.required, Validators.minLength(4)]],
+      user_name: ['', [Validators.required]],
+      user_password: ['', [Validators.required, Validators.minLength(8)]],
+      user_citizen: ['', [Validators.required, Validators.minLength(13)]],
+      user_email: ['', [Validators.required]],
       user_gender: ['', [Validators.required]],
       user_tel: ['', [Validators.required, Validators.minLength(10)]],
     });
