@@ -10,6 +10,7 @@ import { HomeService } from './shared/service/home.service';
 })
 export class AppComponent implements OnInit {
   userType;
+  userName;
   constructor(
     private homeService: HomeService,
     private router: Router
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userName = 'สอง'
     this.homeService.$userType = of('home');
   }
 

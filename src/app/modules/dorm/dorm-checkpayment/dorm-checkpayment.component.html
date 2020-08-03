@@ -1,1 +1,20 @@
-<p>dorm-checkpayment works!</p>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">จำนวนเงิน</th>
+                <th scope="col">วันที่ชำระเงิน</th>
+                <th scope="col">สถานะ</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of payList">
+                <td>{{data.pay_price}}</td>
+                <td>{{data.pay_date}}</td>
+                <td>{{data.pay_status}}</td>
+                <button type="button" class="btn btn-outline-warning" (click)="onShow(data)">ตรวจสอบ</button>
+            </tr>
+        </tbody>
+    </table>
+</div>

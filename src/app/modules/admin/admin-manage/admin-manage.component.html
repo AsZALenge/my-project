@@ -1,1 +1,19 @@
-<p>admin-manage works!</p>
+<div class="container">
+    <div style="text-align:center"><h4>จัดการหอพัก</h4>
+        <div class="bg-light">
+            <div class="row">
+                <div *ngFor="let data of dormList" class="col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="\assets\image\dorm.png" class="card-img-top">
+                        <div class="card-body">
+                            <p class="card-text">{{data.dorm_name}}</p>
+                            <p class="card-text">{{data.dorm_address}}</p>
+                                <button type="button" class="btn btn-outline-success"
+                                    (click)="onShow(data)">ดูหอ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

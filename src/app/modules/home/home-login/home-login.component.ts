@@ -31,7 +31,7 @@ export class HomeLoginComponent implements OnInit {
       return false;
     } else {
       console.log(this.loginForm.value);
-      const userType = 'user'; // เปลี่ยนตรงนี้นะ user admin
+      const userType = 'dorm'; // เปลี่ยนตรงนี้นะ user admin
       this.homeService.$userType = of(userType);
       this.router.navigate([`${userType}`]);
     }

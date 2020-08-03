@@ -1,0 +1,64 @@
+<div class="aUyidf">
+    <div class="container">
+        <div class="col-md-5 offset-md-4">
+            <div class="card text">
+                <div class="card-body">
+                    <h5 class="text-center">ข้อมูลส่วนตัว</h5>
+                    <p class="card-text">
+                    </p>
+                    <form [formGroup]>
+                        <fieldset>
+
+                            <div class="form-group">
+                                <p>ชื่อผู้ดูแลหอพัก</p>
+                                <input class="form-control" placeholder="Username" type="text" required
+                                    value="{{profileList.dorm_owner}}">
+                            </div>
+
+                            <div class="form-group">
+                                <p>รหัสผ่าน</p>
+                                <input class="form-control" placeholder="Password" type="password" required
+                                    value="{{profileList.dorm_password}}">
+                            </div>
+
+                            <div class="form-group">
+                                <p>ชื่อหอพัก</p>
+                                <input class="form-control" placeholder="citizen" type="text" required
+                                    value="{{profileList.dorm_name}}">
+                            </div>
+
+                            <div class="form-group">
+                                <p>เลขประจำตัวประชาชน</p>
+                                <input class="form-control" placeholder="email" type="text" required
+                                    value="{{profileList.dorm_citizen}}">
+                            </div>
+                            <div class="form-group">
+                                <p>ที่อยู่</p>
+                                <input class="form-control" placeholder="Phone" type="text" required
+                                    value="{{profileList.dorm_address}}">
+                            </div>
+                            <div class="form-group">
+                                <p>เลขบัญชีธนาคาร</p>
+                                <input class="form-control" placeholder="Gender" type="text" required
+                                    value="{{profileList.dorm_numbank}}">
+                            </div>
+                            <div class="form-group">
+                                <p>ชื่อธนาคาร</p>
+                                <input class="form-control" placeholder="Namebank" type="text" required
+                                    value="{{profileList.dorm_namebank}}">
+                            </div>
+                            <div class="form-group">
+                                <p>รูปหอพัก</p>
+                                <input class="form-control" placeholder="Image" type="text" required
+                                    value="{{profileList.dorm_img}}">
+                            </div>
+                            <div class="text-center"><a class="btn btn-success"
+                                    (click)="onProfile(profileList)">บันทึก</a></div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>

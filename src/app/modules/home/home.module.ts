@@ -6,18 +6,16 @@ import { HomeRegisterComponent } from './home-register/home-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../../shared/shared.module';
-import { HomeRegisterUserComponent } from './home-register-user/home-register-user.component';
-import { HomeRegisterDormComponent } from './home-register-dorm/home-register-dorm.component';
-
-
+import { HomeRegisteruserComponent } from './home-registeruser/home-registeruser.component';
+import { HomeRegisterdormComponent } from './home-registerdorm/home-registerdorm.component';
 
 @NgModule({
   declarations: [
     HomePageComponent,
     HomeLoginComponent,
     HomeRegisterComponent,
-    HomeRegisterUserComponent,
-    HomeRegisterDormComponent
+    HomeRegisteruserComponent,
+    HomeRegisterdormComponent
   ],
   imports: [
     CommonModule,

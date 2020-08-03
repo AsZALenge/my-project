@@ -1,0 +1,20 @@
+<div style="text-align:center">
+    <h4>จัดการห้องพัก</h4>
+    <P></P>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let data of roomList" class="col-xl-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="\assets\image\dorm.png" class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-text">{{data.room_num}}</p>
+                        <p class="card-text">{{data.room_price}}</p>
+                        <ul>
+                            <button type="button" class="btn btn-outline-danger" (click)="onShow(data)">ลบห้อง</button>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

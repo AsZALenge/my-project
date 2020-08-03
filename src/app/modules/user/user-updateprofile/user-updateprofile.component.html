@@ -1,0 +1,102 @@
+<div class="aUyidf">
+    <div class="container">
+        <div class="col-md-4 offset-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">ข้อมูลส่วนตัว</h5>
+                    <p class="card-text">
+                    </p>
+                    <form [formGroup]>
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Username" formControlName="user_name"
+                                    type="text" required />
+                            </div>
+                            <div *ngIf="form.user_name.invalid && (form.user_name.dirty || form.user_name.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.user_name.errors.required">
+                                    Username is required.
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" formControlName="user_password"
+                                    type="password" required />
+                            </div>
+                            <div *ngIf="form.user_password.invalid && (form.user_password.dirty || form.user_password.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.user_password.errors.required">
+                                    Password is required.
+                                </div>
+                                <div *ngIf="form.user_password.errors.minlength">
+                                    Password must be at least 8 characters long.
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="citizen" formControlName="user_citizen"
+                                    type="text" required />
+                            </div>
+                            <div *ngIf="form.user_citizen.invalid && (form.user_citizen.dirty || form.user_citizen.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.user_citizen.errors.required">
+                                    citizen is required.
+                                </div>
+                                <div *ngIf="form.user_citizen.errors.minlength">
+                                    citizen must be at least 13 characters long.
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="email" formControlName="user_email" type="text"
+                                    required />
+                            </div>
+                            <div *ngIf="form.user_email.invalid && (form.user_email.dirty || form.user_email.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.user_email.errors.required">
+                                    citizen is required.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Phone" formControlName="user_tel" type="text"
+                                    required />
+                            </div>
+                            <div *ngIf="form.user_tel.invalid && (form.user_tel.dirty || form.user_tel.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.user_tel.errors.required">
+                                    Phone is required.
+                                </div>
+                                <div *ngIf="form.user_tel.errors.minlength">
+                                    Phone must be at least 10 characters long.
+                                </div>
+                            </div>
+
+                            <div class="form-check" checked>
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                    formControlName="user_gender" name="gender" value="M" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    ชาย
+                                </label>
+                                <br>
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                    formControlName="user_gender" name="gender" value="F">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    หญิง
+                                </label>
+                            </div>
+
+                            <button class="btn btn-lg btn-success btn-block">
+                                ตกลง
+                            </button>
+                            <button class="btn btn-lg btn-danger btn-block" (click)="resetForm()">
+                                ยกเลิก
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

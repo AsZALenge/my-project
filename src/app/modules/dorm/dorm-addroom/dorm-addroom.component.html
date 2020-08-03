@@ -1,0 +1,138 @@
+<div class="aUyidf">
+    <div class="container">
+        <div class="col-md-4 offset-md-4">
+            <div style="text-align:center">
+            </div>
+            <div class="card">
+                <p></p>
+                <h4 class="text-center">เพิ่มห้อง</h4>
+                <div class="card-body">
+                    <form [formGroup]="addRoom" (ngSubmit)="submitForm()" accept-charset="UTF-8" autocomplete="off">
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="เบอร์ห้อง" formControlName="room_num"
+                                    type="text" required />
+                            </div>
+                            <div *ngIf="form.room_num.invalid && (form.room_num.dirty || form.room_num.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.room_num.errors.required">
+                                    Room Number is required.
+                                </div>
+                            </div>
+
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" id="validatedCustomFile" required
+                                    formControlName="room_img">
+                                <label class="custom-file-label" for="validatedCustomFile">รูปห้องพัก</label>
+                                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="ราคา" formControlName="room_price" type="text"
+                                    required />
+                            </div>
+                            <div *ngIf="form.room_price.invalid && (form.room_price.dirty || form.room_price.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.room_price.errors.required">
+                                    Price is required.
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="ที่จอดรถ" formControlName="room_park"
+                                    type="text" required />
+                            </div>
+                            <div *ngIf="form.room_park.invalid && (form.room_park.dirty || form.room_park.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.room_park.errors.required">
+                                    Park is required.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                                            formControlName="room_wifi">
+                                        <label class="form-check-label" for="exampleCheck1">ไวไฟ (Wi-Fi)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck2"
+                                            formControlName="room_refri">
+                                        <label class="form-check-label" for="exampleCheck2">ตู้เย็น</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck3"
+                                            formControlName="room_macwas">
+                                        <label class="form-check-label" for="exampleCheck3">เครื่องซักผ้า</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck4"
+                                            formControlName="room_pet">
+                                        <label class="form-check-label" for="exampleCheck4">สัตว์เลี้ยง</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck5"
+                                            formControlName="room_heater">
+                                        <label class="form-check-label" for="exampleCheck5">เครื่องทำน้ำอุ่น</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck6"
+                                            formControlName="room_air">
+                                        <label class="form-check-label" for="exampleCheck6">แอร์</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck7"
+                                            formControlName="room_tv">
+                                        <label class="form-check-label" for="exampleCheck7">ทีวี</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck8"
+                                            formControlName="room_fan">
+                                        <label class="form-check-label" for="exampleCheck8">พัดลม</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div class="card text-center">
+                                <div class="text-center">
+                                    <h5>สถานะห้อง</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check" checked>
+                                            <input class="form-check-input" type="radio" name="exampleRadios"
+                                                id="exampleRadios1" formControlName="room_status" name="gender"
+                                                value="ว่าง" checked>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                                ว่าง
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-check" checked>
+                                            <input class="form-check-input" type="radio" name="exampleRadios"
+                                                id="exampleRadios1" formControlName="room_status" name="gender"
+                                                value="ไม่ว่าง" checked>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                                ไม่ว่าง
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <button class="btn btn-lg btn-success btn-block">
+                                บันทึก
+                            </button>
+                            <button class="btn btn-lg btn-danger btn-block" (click)="resetForm()">
+                                ยกเลิก
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

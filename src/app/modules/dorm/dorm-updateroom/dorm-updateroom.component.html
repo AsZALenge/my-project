@@ -1,0 +1,153 @@
+<div class="container">
+    <form [formGroup]="editRoom" accept-charset="UTF-8" autocomplete="off">
+        <fieldset>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="inputEmail4">เบอร์ห้อง</label>
+                    <input class="form-control" placeholder="" formControlName="room_num" type="text" required />
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="inputPassword4">รูปห้องพัก</label>
+                    <input class="form-control" placeholder="" formControlName="room_img" type="text" required />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputPassword4">ราคา</label>
+                    <input class="form-control" placeholder="" formControlName="room_price" type="number" min="0"
+                        required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pd_details">ที่จอดรถ</label>
+
+                <input type="checkbox" value="true" formControlName="room_wifi">
+                <span>ME</span>
+                <!-- <textarea class="form-control" formControlName="room_wifi" rows="3"></textarea> -->
+            </div>
+            <div class="form-group">
+                <label for="pd_details">ไวไฟ (Wi-Fi)</label>
+                <textarea class="form-control" formControlName="room_macwas" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pd_details">ตู้เย็น</label>
+                <textarea class="form-control" formControlName="room_heater" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pd_details">เครื่องซักผ้า</label>
+                <textarea class="form-control" formControlName="room_park" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pd_details">สัตว์เลี้ยง</label>
+                <textarea class="form-control" formControlName="room_tv" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pd_details">เครื่องทำน้ำอุ่น</label>
+                <textarea class="form-control" formControlName="room_refri" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pd_details">แอร์</label>
+                <textarea class="form-control" formControlName="room_pet" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pd_details">ทีวี</label>
+                <textarea class="form-control" formControlName="room_air" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pd_details">พัดลม</label>
+                <textarea class="form-control" formControlName="room_fan" rows="3"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-lg btn-outline-success" (click)="submitForm()">
+                        บันทึก
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<!-- <div class="aUyidf">
+    <div class="container">
+        <div class="col-md-5 offset-md-4">
+            <div class="card text">
+                <div class="card-body">
+                    <h5 class="text-center">ข้อมูลห้องพัก</h5>
+                    <p class="card-text">
+                    </p>
+                    <form [formGroup]="editRoom" >
+                        <fieldset>
+
+                            <div class="form-group">
+                                <p>เบอร์ห้อง</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_num}}">
+                            </div>
+
+                            <div class="form-group">
+                                <p>รูปห้องพัก</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_img}}">
+                            </div>
+
+                            <div class="form-group">
+                                <p>ราคา</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_price}}">
+                            </div>
+
+                            <div class="form-group">
+                                <p>ที่จอดรถ</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_park}}">
+                            </div>
+                            <div class="form-group">
+                                <p>ไวไฟ (Wi-Fi)</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_wifi}}">
+                            </div>
+                            <div class="form-group">
+                                <p>ตู้เย็น</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_refri}}">
+                            </div>
+                            <div class="form-group">
+                                <p>เครื่องซักผ้า</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_macwas}}">
+                            </div>
+                            <div class="form-group">
+                                <p>สัตว์เลี้ยง</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_pet}}">
+                            </div>
+                            <div class="form-group">
+                                <p>เครื่องทำน้ำอุ่น</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_heater}}">
+                            </div>
+                            <div class="form-group">
+                                <p>แอร์</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_air}}">
+                            </div>
+                            <div class="form-group">
+                                <p>ทีวี</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_tv}}">
+                            </div>
+                            <div class="form-group">
+                                <p>พัดลม</p>
+                                <input class="form-control" placeholder="" type="text" required
+                                    value="{{roomList.room_fan}}">
+                            </div>
+                            <div class="text-center"><a class="btn btn-success"
+                                    (click)="submitForm(roomList)">บันทึก</a></div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p> -->

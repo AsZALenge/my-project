@@ -4,19 +4,33 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserRoutingModule } from './user-routing.module';
 import { UserSearchComponent } from './user-search/user-search.component';
-import { UserSearchDormComponent } from './user-search-dorm/user-search-dorm.component';
-import { UserSearchDormShowallroomComponent } from './user-search-dorm-showallroom/user-search-dorm-showallroom.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserUpdateprofileComponent } from './user-updateprofile/user-updateprofile.component';
+import { UserShowdormComponent } from './user-showdorm/user-showdorm.component';
+import { UserShowroomComponent } from './user-showroom/user-showroom.component';
+import { UserSelectroomComponent } from './user-selectroom/user-selectroom.component';
+import { UserUploadpaymentComponent } from './user-uploadpayment/user-uploadpayment.component';
 import { UserReserinformationComponent } from './user-reserinformation/user-reserinformation.component';
-import { UserUpdateProfileComponent } from './user-update-profile/user-update-profile.component';
 import { UserPaymentComponent } from './user-payment/user-payment.component';
-import { UserUploadPaymentComponent } from './user-upload-payment/user-upload-payment.component';
-import { UserSearchDormShowroomComponent } from './user-search-dorm-showroom/user-search-dorm-showroom.component';
 
 @NgModule({
-  declarations: [UserHomeComponent, UserProfileComponent, UserSearchComponent, UserSearchDormComponent, UserSearchDormShowallroomComponent, UserReserinformationComponent, UserUpdateProfileComponent, UserPaymentComponent, UserUploadPaymentComponent, UserSearchDormShowroomComponent],
+  declarations: [
+    UserHomeComponent,
+    UserPaymentComponent,
+    UserProfileComponent,
+    UserReserinformationComponent,
+    UserSearchComponent,
+    UserSelectroomComponent,
+    UserShowdormComponent,
+    UserShowroomComponent,
+    UserUpdateprofileComponent,
+    UserUploadpaymentComponent,
+  ],
+
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class UserModule { }
