@@ -94,7 +94,6 @@ export class DormUpdateroomComponent implements OnInit {
 
   // save
   submitForm() {
-    debugger
     // case notfound in condition
     if (this.editRoom.invalid) {
       return false;
