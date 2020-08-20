@@ -16,16 +16,23 @@ export class AppComponent implements OnInit {
     private router: Router
   ) {
     homeService.$userType.subscribe(data => {
+      console.log('USERTYPE ::: ' + data)
+      this.userName = localStorage.getItem('user');
       this.userType = data;
     });
   }
 
   ngOnInit(): void {
-    this.userName = 'สอง'
-    this.homeService.$userType = of('home');
+    const uType = localStorage.getItem('userType');
+    if (uType) {
+      this.homeService.$userType = of(JSON.parse(uType));
+    } else {
+      this.homeService.$userType = of('home');
+    }    
   }
 
   logout() {
+    localStorage.clear();
     const userType = 'home';
     this.homeService.$userType = of(userType);
     this.router.navigate([`${userType}`]);

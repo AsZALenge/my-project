@@ -18,16 +18,16 @@ export class UserReserinformationComponent implements OnInit {
   }
   getMemberList() {
     this.shaerdService.getAllMem().subscribe((data) => {
-      console.log('LOGGGG LISTSHOP', data);
+      console.log('LOGGGG getAllMem', data);
       this.memberList = data
     });
   };
 
-  onSelect(data) {
+  onShow(data) {
     this.shaerdService.getMemBy_id(data.mem_id).subscribe((res) => {
-      console.log('LOGGGG LISTSHOP', res);
+      console.log('LOGGGG getMemBy_id', res);
       this.product = res;
-      this.router.navigate(['']);
+      this.router.navigate(['/user/showreser',data.mem_id]);
     });
   }
 }

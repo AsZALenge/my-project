@@ -1,64 +1,147 @@
-<div class="aUyidf">
-    <div class="container">
-        <div class="col-md-5 offset-md-4">
-            <div class="card text">
-                <div class="card-body">
-                    <h5 class="text-center">ข้อมูลส่วนตัว</h5>
-                    <p class="card-text">
-                    </p>
-                    <form [formGroup]>
-                        <fieldset>
+<div class="container">
+    <div class="card" class="col-md-9 offset-md-1" style="background-color: #E1ECF9;">
+        <div class="col-md-10 offset-md-1"><br>
+            <h4>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
+                    <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                </svg>&nbsp;
+                แก้ไขข้อมูลส่วนตัว</h4><br>
+            <form [formGroup]="editprofileForm" accept-charset="UTF-8" autocomplete="off">
+                <fieldset>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">
+                                <h6>ชื่อ</h6>
+                            </label>
+                            <input class="form-control" placeholder="" formControlName="first_name" type="text"
+                                required />
+                            <div *ngIf="form.first_name.invalid && (form.first_name.dirty || form.first_name.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.first_name.errors.required">
+                                    กรุณากรอกชื่อ
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">
+                                <h6>นามสกุล</h6>
+                            </label>
+                            <input class="form-control" placeholder="" formControlName="last_name" type="text"
+                                required />
+                            <div *ngIf="form.last_name.invalid && (form.last_name.dirty || form.last_name.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.last_name.errors.required">
+                                    กรุณากรอกนามสกุล
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">
+                                <h6>ชื่อผู้ใช้งานระบบ</h6>
+                            </label>
+                            <input class="form-control" placeholder="" formControlName="username" type="text"
+                                required disabled/>
+                            <div *ngIf="form.username.invalid && (form.username.dirty || form.username.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.username.errors.required">
+                                    กรุณากรอกชื่อผู้ใช้งานระบบ
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">
+                                <h6>รหัสผ่าน</h6>
+                            </label>
+                            <input class="form-control" placeholder="" formControlName="password" type="password"
+                                required disabled/>
+                            <div *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.password.errors.required">
+                                    กรุณากรอกรหัสผ่าน
+                                </div>
+                                <div *ngIf="form.password.errors.minlength">
+                                    รหัสผ่านจะต้องมีความยาวอย่างน้อย 8 ตัวอักษร
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputPassword4">
+                                <h6>เลขบัตรประจำตัวประชาชน</h6>
+                            </label>
+                            <input class="form-control" placeholder="" formControlName="citizen" type="text" required />
+                            <div *ngIf="form.citizen.invalid && (form.citizen.dirty || form.citizen.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.citizen.errors.required">
+                                    กรุณากรอกเลขบัตรประจำตัวประชาชน
+                                </div>
+                                <div *ngIf="form.citizen.errors.minlength">
+                                    เลขบัตรประจำตัวประชาชนต้องมีความยาวอย่างน้อย 13 ตัวอักษร
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                            <div class="form-group">
-                                <p>ชื่อผู้ดูแลหอพัก</p>
-                                <input class="form-control" placeholder="Username" type="text" required
-                                    value="{{profileList.dorm_owner}}">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputPassword4">
+                                <h6>อีเมลล์</h6>
+                            </label>
+                            <input class="form-control" placeholder="" formControlName="email" type="text" required />
+                            <div *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.email.errors.required">
+                                    กรุณากรอกอีเมลล์
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputPassword4">
+                                <h6>เบอร์โทรศัพท์</h6>
+                            </label>
+                            <input class="form-control" placeholder="" formControlName="tel" type="text" required />
+                            <div *ngIf="form.tel.invalid && (form.tel.dirty || form.tel.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="form.tel.errors.required">
+                                    กรุณากรอกเบอร์โทรศัพท์
+                                </div>
+                                <div *ngIf="form.tel.errors.minlength">
+                                    เบอร์โทรศัพท์ต้องมีตัวเลขอย่างน้อย 10 ตัว
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="form-check" checked>
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                formControlName="gender" name="gender" value="ชาย"checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                ชาย
+                            </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                                formControlName="gender" name="gender" value="หญิง"checked>
+                            <label class="form-check-label" for="exampleRadios2">
+                                หญิง
+                            </label>
+                        </div>
+                    </div><br>
 
-                            <div class="form-group">
-                                <p>รหัสผ่าน</p>
-                                <input class="form-control" placeholder="Password" type="password" required
-                                    value="{{profileList.dorm_password}}">
-                            </div>
-
-                            <div class="form-group">
-                                <p>ชื่อหอพัก</p>
-                                <input class="form-control" placeholder="citizen" type="text" required
-                                    value="{{profileList.dorm_name}}">
-                            </div>
-
-                            <div class="form-group">
-                                <p>เลขประจำตัวประชาชน</p>
-                                <input class="form-control" placeholder="email" type="text" required
-                                    value="{{profileList.dorm_citizen}}">
-                            </div>
-                            <div class="form-group">
-                                <p>ที่อยู่</p>
-                                <input class="form-control" placeholder="Phone" type="text" required
-                                    value="{{profileList.dorm_address}}">
-                            </div>
-                            <div class="form-group">
-                                <p>เลขบัญชีธนาคาร</p>
-                                <input class="form-control" placeholder="Gender" type="text" required
-                                    value="{{profileList.dorm_numbank}}">
-                            </div>
-                            <div class="form-group">
-                                <p>ชื่อธนาคาร</p>
-                                <input class="form-control" placeholder="Namebank" type="text" required
-                                    value="{{profileList.dorm_namebank}}">
-                            </div>
-                            <div class="form-group">
-                                <p>รูปหอพัก</p>
-                                <input class="form-control" placeholder="Image" type="text" required
-                                    value="{{profileList.dorm_img}}">
-                            </div>
-                            <div class="text-center"><a class="btn btn-success"
-                                    (click)="onProfile(profileList)">บันทึก</a></div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
+                    <div class="text-center">
+                        <button class="btn btn-lg btn-success" (click)="update()">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ตกลง&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-lg btn-danger" routerLink="/dorm/profile">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ยกเลิก&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </button>
+                    </div>
+                </fieldset><br>
+            </form>
         </div>
     </div>
 </div>
-<p>

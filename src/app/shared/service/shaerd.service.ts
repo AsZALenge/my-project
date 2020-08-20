@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 export class ShaerdService {
 
   private API_URL = environment.api_url;
+  private APIREGISTER_URL = environment.apiregister_url;
 
   constructor(private http: HttpClient) { }
 
@@ -17,10 +18,10 @@ export class ShaerdService {
     }),
   };
 
-  public registeruser(body: any) {
-    return this.http.post<any>(this.API_URL + '/user/save', body, this.httpOption);
+  public register(body: any) {
+    return this.http.post<any>(this.APIREGISTER_URL + '/user/save', body, this.httpOption);
   }
-  public registerdorm(body: any) {
+  public createdorm(body: any) {
     return this.http.post<any>(this.API_URL + '/dorm/save', body, this.httpOption);
   }
   public getAllRoom() {
@@ -56,7 +57,22 @@ export class ShaerdService {
   public savePayment(body: any) {
     return this.http.post<any>(this.API_URL + '/pay/save', body, this.httpOption);
   }
-//Dorm
+  //Dorm
+
+  public getDormByuserId(id: any) {
+    return this.http.get<any>(this.API_URL + '/dorm-id/' + `${id}`);
+  }
+
+  public update(body: object) {
+    console.log('LOG API update  URL>>>>:', this.APIREGISTER_URL + '/user/update');
+
+    console.log('LOG API update  body>>>>:', body);
+    return this.http.post<any>(this.APIREGISTER_URL + '/user/update', body, this.httpOption);
+  }
+  public getUser(username: string) {
+    return this.http.get<any>(this.APIREGISTER_URL + '/user/' + `${username}`);
+  }
+
   public addroom(body: any) {
     return this.http.post<any>(this.API_URL + '/room/save', body, this.httpOption);
   }
@@ -85,7 +101,7 @@ export class ShaerdService {
     return this.http.get<any>(this.API_URL + '/pays');
   }
   public deleteRoomByRoom_id(body: any) {
-    return this.http.delete<any>(this.API_URL + '/room/' + `${body}`);
+    return this.http.delete<any>(this.API_URL + '/room/' + `${body}`);//admin
   }
   public updateRoom(body: any) {
     return this.http.post<any>(this.API_URL + '/room/update', body, this.httpOption);
@@ -93,4 +109,14 @@ export class ShaerdService {
   public getAllroom() {
     return this.http.get<any>(this.API_URL + '/rooms');
   }
+
+  //admin
+  public deleteDormByDorm_id(body: any) {
+    return this.http.delete<any>(this.API_URL + '/dorm/' + `${body}`);
+  }
+  public updateUser(body: any) {
+    return this.http.post<any>(this.API_URL + '/user/update', body, this.httpOption);
+  }
+
+
 }

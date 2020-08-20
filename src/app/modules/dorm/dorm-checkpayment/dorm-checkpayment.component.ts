@@ -29,9 +29,9 @@ export class DormCheckpaymentComponent implements OnInit {
 
   onShow(data) {
     this.shaerdService.getCheckPaymentBy_id(data.pay_id).subscribe((res) => {
-      console.log('LOGGGG LISTSHOP', res);
+      console.log('LOGGGG getCheckPaymentBy_id', res);
       this.product = res;
-      this.router.navigate(['/dorm/reCheckPayment']);
+      this.router.navigate(['/dorm/reCheckPayment',data.pay_id]);
     });
   }
 }

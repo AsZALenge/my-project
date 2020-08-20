@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-showroom.component.css']
 })
 export class UserShowroomComponent implements OnInit {
-  shopList: Array<any>;
-  product;
+  roomList: Array<any>;
 
   constructor(
     private shaerdService: ShaerdService,
@@ -18,21 +17,20 @@ export class UserShowroomComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getProductList();
+    this.getRoomList();
   }
 
-  getProductList() {
+  getRoomList() {
     this.shaerdService.getAllRoom().subscribe((data) => {
-      console.log('LOGGGG LISTSHOP', data);
-      this.shopList = data
+      console.log('LOGGGG getAllRoom', data);
+      this.roomList = data
     });
   };
 
-  onShow(data) {
-    this.shaerdService.getRoomBy_id(data.room_id).subscribe((res) => {
-      console.log('LOGGGG LISTSHOP', res);
-      this.product = res;
+  onShowdetail(data) {
+    // this.shaerdService.getRoomBy_id(data.room_id).subscribe((res) => {
+      console.log('LOGGGG getRoomBy_id', data);
       this.router.navigate(['/user/selectRoom', data.room_id]);
-    });
+    // });
   }
 }

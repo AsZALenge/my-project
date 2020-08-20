@@ -26,9 +26,15 @@ export class AdminManageComponent implements OnInit {
 
   onShow(data) {
     this.shaerdService.getDormBy_id(data.dorm_id).subscribe((res) => {
-      console.log('LOGGGG LISTSHOP', res);
+      console.log('LOGGGG getDormBy_id', res);
       this.product = res;
       this.router.navigate(['/admin/manageRoom']);
+    });
+  }
+  onDeletedorm(data) {
+    this.shaerdService.deleteDormByDorm_id(data.dorm_id).subscribe((res) => { 
+    window.location.reload();
+      console.log('LOGGGG DELETEDORM', res);
     });
   }
 }

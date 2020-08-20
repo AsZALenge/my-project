@@ -1,29 +1,30 @@
 <div class="container">
   <div class="col-md-4 offset-md-4">
-    <div class="card text-center">
+    <div class="card text">
       <div class="card-body">
-        <h5 class="card-title">Sign In</h5>
-        <p class="card-text">
-          PROJECT
-        </p>
+        <h4 class="card-title"><div *ngIf="loading" class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>&nbsp;เข้าสู่ระบบ </h4><br>
         <form [formGroup]="loginForm" accept-charset="UTF-8" autocomplete="off">
           <fieldset>
+            <h6 class="card-title">ชื่อผู้ใช้งาน</h6>
             <div class="form-group">
-              <input class="form-control" placeholder="Username" formControlName="username" type="text" required />
+              <input class="form-control" placeholder="" formControlName="username" type="text" required />
             </div>
+            <h6 class="card-title">รหัสผ่าน</h6>
             <div class="form-group">
-              <input class="form-control" placeholder="Password" formControlName="password" type="password" required />
+              <input class="form-control" placeholder="" formControlName="password" type="password" required />
             </div>
             <div class="checkbox">
               <label>
                 <input name="remember" type="checkbox" value="Remember Me" />
                 Remember Me
               </label>
-            </div>
+            </div><br>
           </fieldset>
         </form>
-        <button class="btn btn-lg btn-success btn-block" (click)="login()">
-          Login
+        <button class="btn btn-lg btn-primary btn-block" (click)="login()" style="background-color: #236AB9;">
+          เข้าสู่ระบบ
         </button>
       </div>
     </div>

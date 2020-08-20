@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShaerdService } from 'src/app/shared/service/shaerd.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-registeruser',
@@ -8,36 +9,40 @@ import { ShaerdService } from 'src/app/shared/service/shaerd.service';
   styleUrls: ['./home-registeruser.component.css']
 })
 export class HomeRegisteruserComponent implements OnInit {
-
-  registerFormUser: FormGroup;
+  registerForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private shaerdService: ShaerdService
+    private shaerdService: ShaerdService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.registerFormUser = this.fb.group({
-      user_name: ['', [Validators.required]],
-      user_password: ['', [Validators.required, Validators.minLength(8)]],
-      user_citizen: ['', [Validators.required, Validators.minLength(13)]],
-      user_email: ['', [Validators.required]],
-      user_gender: ['', [Validators.required]],
-      user_tel: ['', [Validators.required, Validators.minLength(10)]],
+    this.registerForm = this.fb.group({
+      first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      citizen: ['', [Validators.required, Validators.minLength(13)]],
+      email: ['', [Validators.required]],
+      tel: ['', [Validators.required, Validators.minLength(10)]],
+      gender: ['', [Validators.required]],
+      role: ['2', [Validators.required]]
     });
   }
 
   // save
   submitForm() {
     // case notfound in condition
-    if (this.registerFormUser.invalid) {
+    if (this.registerForm.invalid) {
       return false;
 
     } else { // case success
-      console.log(this.registerFormUser.value);
-
+      console.log(this.registerForm.value);
+      console.log('LOG DATA FN() >>>submitForm<<<::', this.registerForm.value);
+      this.router.navigate(['/home/login']);
       // register
-      this.shaerdService.registeruser(this.registerFormUser.value).subscribe(
+      this.shaerdService.register(this.registerForm.value).subscribe(
         (error) => console.log(error)
       );
     }
@@ -45,9 +50,9 @@ export class HomeRegisteruserComponent implements OnInit {
 
   // reset
   resetForm() {
-    this.registerFormUser.reset();
+    this.registerForm.reset();
   }
 
-  get form() { return this.registerFormUser.controls; }
+  get form() { return this.registerForm.controls; }
 
 }

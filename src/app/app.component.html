@@ -1,33 +1,45 @@
-<nav *ngIf="userType === 'home'" class="navbar navbar-expand-lg navbar-light bg-secondary bottom-2">
-  <a class="navbar-brand" routerLink="/home">HOME</a>
+<nav *ngIf="userType === 'home'" class="navbar navbar-expand-lg navbar-light navbar-dark bottom-2"
+  style="background-color: #609CE1;">
+  <a class="navbar-brand" routerLink="/home"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/home">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home">หน้าแรก<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/home/login">Login<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home/login">เข้าสู่ระบบ<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/home/register">Register<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home/register">สมัครสมาชิก<span class="sr-only">(current)</span></a>
       </li>
+    </ul>
+  </div> -->
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="home">หน้าแรก<span class="sr-only">(current)</span></a>
+    </ul>
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="/home/login">เข้าสู่ระบบ<span class="sr-only">(current)</span></a>
+    </ul>
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="/home/register">สมัครสมาชิก<span class="sr-only">(current)</span></a>
     </ul>
   </div>
 </nav>
 
-<nav *ngIf="userType === 'admin'" class="navbar navbar-expand-lg navbar-light bg-secondary bottom-2">
-  <a class="navbar-brand" routerLink="/admin">ADMIN</a>
+<nav *ngIf="userType === 'admin'" class="navbar navbar-expand-lg navbar-light navbar-dark bottom-2"
+  style="background-color: #609CE1;">
+  <a class="navbar-brand" routerLink="/admin">ผู้ดูแลระบบ</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" routerLink="admin">หน้าแรก<span class="sr-only">(current)</span></a>
@@ -39,58 +51,167 @@
         <a class="nav-link" routerLink="admin/manage">จัดการข้อมูลหอพัก<span class="sr-only">(current)</span></a>
       </li>
     </ul>
+  </div> -->
+
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="admin">หน้าแรก<span class="sr-only">(current)</span></a>
+    </ul>
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="admin/search">ค้นหา<span class="sr-only">(current)</span></a>
+    </ul>
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="admin/manage">จัดการข้อมูลหอพัก<span class="sr-only">(current)</span></a>
+    </ul>
   </div>
-   
+  <ul class="nav navbar-nav navbar-right">
+    <a class="nav-link">
+      <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+      </svg>
+      <span class="sr-only">(current)</span>{{userName}}</a>
+    <a class="nav-link" (click)="logout()">
+      <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z" />
+        <path fill-rule="evenodd"
+          d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z" />
+        <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z" />
+      </svg>
+      <span class="sr-only">(current)</span></a>
+  </ul>
 </nav>
 
-<nav *ngIf="userType === 'user'" class="navbar navbar-expand-lg navbar-light bg-secondary bottom-2">
-  <a class="navbar-brand" routerLink="/user">USER</a>
+<nav *ngIf="userType === 'user'" class="navbar navbar-expand-lg navbar-light navbar-dark bottom-2"
+  style="background-color: #609CE1;">
+  <a class="navbar-brand" routerLink="/user">
+    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-square" fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+      <path fill-rule="evenodd" d="M2 15v-1c0-1 1-4 6-4s6 3 6 4v1H2zm6-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+    </svg>
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="user">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="user">หน้าแรก<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="user/search">search<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="user/search">ค้นหา<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="user/reserInformation">ReserInformation<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="user/reserInformation">ข้อมูลการจอง<span class="sr-only">(current)</span></a>
       </li>
+    </ul>
+  </div> -->
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="user">หน้าแรก<span class="sr-only">(current)</span></a>
+    </ul>
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="user/search">ค้นหา<span class="sr-only">(current)</span></a>
+    </ul>
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="user/reserInformation">ข้อมูลการจอง<span class="sr-only">(current)</span></a>
     </ul>
   </div>
   <ul class="nav navbar-nav navbar-right">
-    <a class="nav-link" routerLink="user/profile">{{userName}}<span class="sr-only">(current)</span></a>
+    <a class="nav-link" routerLink="user/profile">
+      <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+      </svg>
+      <span class="sr-only">(current)</span>{{userName}}</a>
+    <a class="nav-link" (click)="logout()">
+      <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z" />
+        <path fill-rule="evenodd"
+          d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z" />
+        <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z" />
+      </svg>
+      <span class="sr-only">(current)</span></a>
   </ul>
 </nav>
 
-<nav *ngIf="userType === 'dorm'" class="navbar navbar-expand-lg navbar-light bg-secondary bottom-2">
-  <a class="navbar-brand" routerLink="/dorm">DORM</a>
+<nav *ngIf="userType === 'dorm'" class="navbar navbar-expand-lg navbar-light navbar-dark bottom-2"
+  style="background-color: #609CE1;">
+  <a class="navbar-brand" routerLink="/dorm">
+    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+      <path fill-rule="evenodd"
+        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+    </svg>
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="dorm">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="dorm">หน้าแรก<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="dorm/mange">Manage<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="dorm/mange">จัดการข้อมูลหอพัก<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="dorm/checkPayment">Check Payment<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="dorm/checkPayment">ตรวจสอบข้อมูลการชำระเงิน<span class="sr-only">(current)</span></a>
       </li>
     </ul>
+  </div> -->
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="dorm">หน้าแรก<span class="sr-only">(current)</span></a>
+    </ul>
+    <!-- <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="dorm/manageDorm">หอพัก<span class="sr-only">(current)</span></a>
+    </ul> -->
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="dorm/mange">จัดการข้อมูลหอพัก<span class="sr-only">(current)</span></a>
+    </ul>
+    <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="dorm/checkPayment">ตรวจสอบการชำระเงิน<span class="sr-only">(current)</span></a>
+    </ul>
+    <!-- <ul class="nav navbar-nav">
+      <a class="nav-link" routerLink="dorm/checkPayment">ตรวจสอบการชำระเงิน<span class="sr-only">(current)</span></a>
+    </ul> -->
   </div>
+
   <ul class="nav navbar-nav navbar-right">
-    <a class="nav-link" routerLink="dorm/profile">Profile<span class="sr-only">(current)</span></a>
+    <a class="nav-link" routerLink="dorm/profile">
+      <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+      </svg>
+      <span class="sr-only">(current)</span>{{userName}}</a>
+    <a class="nav-link" (click)="logout()">
+      <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z" />
+        <path fill-rule="evenodd"
+          d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z" />
+        <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z" />
+      </svg>
+      <span class="sr-only">(current)</span></a>
   </ul>
 </nav>
+
 
 <router-outlet></router-outlet>

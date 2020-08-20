@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DormAddroomComponent implements OnInit {
   addRoom: FormGroup;
-  saveRoom;
+  
 
   constructor(
     private fb: FormBuilder,

@@ -11,6 +11,9 @@ import { DormAddroomComponent } from './dorm-addroom/dorm-addroom.component';
 import { DormUpdateprofileComponent } from './dorm-updateprofile/dorm-updateprofile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DormRecheckpaymentComponent } from './dorm-recheckpayment/dorm-recheckpayment.component';
+import { DormCreatedormitoryComponent } from './dorm-createdormitory/dorm-createdormitory.component';
+import { DormDormitoryComponent } from './dorm-dormitory/dorm-dormitory.component';
+import { DormManagedormComponent } from './dorm-managedorm/dorm-managedorm.component';
 
 @NgModule({
   declarations: [DormHomeComponent,
@@ -21,7 +24,10 @@ import { DormRecheckpaymentComponent } from './dorm-recheckpayment/dorm-recheckp
     DormAddroomComponent,
     DormUpdateprofileComponent,
     DormUpdateroomComponent,
-    DormRecheckpaymentComponent
+    DormRecheckpaymentComponent,
+    DormCreatedormitoryComponent,
+    DormDormitoryComponent,
+    DormManagedormComponent
   ],
 
   imports: [

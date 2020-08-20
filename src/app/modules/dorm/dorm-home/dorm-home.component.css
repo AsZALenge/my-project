@@ -1,3 +1,22 @@
 .widthimage{
     width:30%;
 }
+
+.float{
+	z-index: 1;
+	position:fixed;
+	width:80px;
+	height:80px;
+	bottom:60px;
+	margin-bottom: 3em;
+	right:39px;
+	background-color:#28a745;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}

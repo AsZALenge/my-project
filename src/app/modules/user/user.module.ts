@@ -12,6 +12,7 @@ import { UserSelectroomComponent } from './user-selectroom/user-selectroom.compo
 import { UserUploadpaymentComponent } from './user-uploadpayment/user-uploadpayment.component';
 import { UserReserinformationComponent } from './user-reserinformation/user-reserinformation.component';
 import { UserPaymentComponent } from './user-payment/user-payment.component';
+import { UserShowreserComponent } from './user-showreser/user-showreser.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UserPaymentComponent } from './user-payment/user-payment.component';
     UserShowroomComponent,
     UserUpdateprofileComponent,
     UserUploadpaymentComponent,
+    UserShowreserComponent,
   ],
 
   imports: [

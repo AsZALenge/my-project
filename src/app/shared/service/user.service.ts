@@ -15,8 +15,4 @@ export class UserService {
       'Content-Type': 'application/json',
     }),
   };
-
-  public updateuser(body: any) {
-    return this.http.post<any>(this.API_URL + '', body, this.httpOption);
-  }
 }

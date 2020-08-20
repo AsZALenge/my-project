@@ -1,7 +1,24 @@
-<div class="card text-center">
-    <div>
-        <h3 class="card-title">หอพัก ก.</h3>
-        <img src="\assets\image\dorm.png" class="widthimage" alt="...">
-        <p></p>
+<div class="container">
+
+    <a href="#" class="float " routerLink="/dorm/createDorm">
+        <p class="my-float">สร้างหอพัก</p> 
+     </a>
+    
+    <div class="card" style="background-color: #E1ECF9;">
+        <div class="text-center col-md-10 offset-md-1"><br>
+            <h4 class="text-center">หอพัก ....</h4>
+            <div class="row">
+                <div *ngFor="let data of roomList" class="col-xl-4"><br>
+                    <div class="card" style="width: 18rem;">
+                        <img src="\assets\image\dorm.png" class="card-img-top">
+                        <div class="card-body">
+                            <p class="card-text">ห้อง : {{data.room_num}}</p>
+                            <p class="card-text">ราคา : {{data.room_price}}</p>
+                            <p class="card-text">สถานะ : {{data.room_status}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+        </div>
     </div>
-</div>
+</div><br>

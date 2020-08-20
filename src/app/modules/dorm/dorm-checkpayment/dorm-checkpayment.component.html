@@ -1,6 +1,6 @@
 <div class="container">
     <table class="table table-hover">
-        <thead>
+        <thead class="thead" style="background-color: #E1ECF9;">
             <tr>
                 <th scope="col">จำนวนเงิน</th>
                 <th scope="col">วันที่ชำระเงิน</th>
@@ -13,7 +13,7 @@
                 <td>{{data.pay_price}}</td>
                 <td>{{data.pay_date}}</td>
                 <td>{{data.pay_status}}</td>
-                <button type="button" class="btn btn-outline-warning" (click)="onShow(data)">ตรวจสอบ</button>
+                <td><button type="button" class="btn btn-outline-warning" (click)="onShow(data)">ตรวจสอบ</button></td>
             </tr>
         </tbody>
     </table>

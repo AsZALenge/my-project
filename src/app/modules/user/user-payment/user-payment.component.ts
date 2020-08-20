@@ -18,14 +18,14 @@ export class UserPaymentComponent implements OnInit {
   }
   getPayment() {
     this.shaerdService.getAllPayment().subscribe((data) => {
-      console.log('LOGGGG LISTSHOP', data);
+      console.log('LOGGGG getAllPayment', data);
       this.paymentList = data
     });
   };
 
   onPayment(data) {
     this.shaerdService.getPaymentBy_id(data.dorm_id).subscribe((res) => {
-      console.log('LOGGGG LISTSHOP', res);
+      console.log('LOGGGG getPaymentBy_id', res);
       this.product = res;
       this.router.navigate(['/user/uploadPayment']);
     });

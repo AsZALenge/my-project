@@ -9,18 +9,24 @@ import { DormUpdateroomComponent } from './dorm-updateroom/dorm-updateroom.compo
 import { DormSelectroomupdateComponent } from './dorm-selectroomupdate/dorm-selectroomupdate.component';
 import { DormAddroomComponent } from './dorm-addroom/dorm-addroom.component';
 import { DormRecheckpaymentComponent } from './dorm-recheckpayment/dorm-recheckpayment.component';
+import { DormCreatedormitoryComponent } from './dorm-createdormitory/dorm-createdormitory.component';
+import { DormDormitoryComponent } from './dorm-dormitory/dorm-dormitory.component';
+import { DormManagedormComponent } from './dorm-managedorm/dorm-managedorm.component';
 
 
 const routes: Routes = [
     { path: '', component: DormHomeComponent },
+    { path: 'createDorm', component: DormCreatedormitoryComponent },
+    { path: 'manageDorm', component: DormManagedormComponent },
     { path: 'mange', component: DormManageComponent },
+    { path: 'detailDorm', component: DormDormitoryComponent },
     { path: 'updateRoom/:room_id', component: DormUpdateroomComponent },
     { path: 'selectRoomUpdate', component: DormSelectroomupdateComponent },
     { path: 'addRoom', component: DormAddroomComponent },
     { path: 'checkPayment', component: DormCheckpaymentComponent },
-    { path: 'reCheckPayment', component: DormRecheckpaymentComponent },
+    { path: 'reCheckPayment/:pay_id', component: DormRecheckpaymentComponent },
     { path: 'profile', component: DormProfileComponent },
-    { path: 'updateProfile/:dorm_id', component: DormUpdateprofileComponent },
+    { path: 'updateProfile', component: DormUpdateprofileComponent },
 
 ];
 

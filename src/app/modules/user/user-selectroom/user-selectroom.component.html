@@ -1,14 +1,509 @@
-<div class="container">
-    <div style="text-align:center">
-        <div class="bg-light">
-            <!-- <article class="card-body mx-auto" style="max-width: 900px;" *ngFor="let data of roomList"> -->
-                <img src="\assets\image\2.jpg" name="aboutme" class="widthimage">
-                <p></p>
-                
-                <h5 class="card-title">Name: {{roomList.room_num}}</h5>
+<!DOCTYPE html>
+<html>
+<style>
+    /* The container */
+    .con {
+        display: block;
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 0px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 
-                <button type="button" class="btn btn-secondary  btn-lg btn-block"  (click)="onSelect(roomList)">จอง</button>
-            <!-- </article> -->
+    /* Hide the browser's default radio button */
+    .con input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .con:hover input~.checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .con input:checked~.checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .con input:checked~.checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .con .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+</style>
+<div class="container">
+    <div class="card" style="background-color: #E1ECF9;">
+        <div class="col-md-10 offset-md-1">
+            <form [formGroup]="showRoom" accept-charset="UTF-8" autocomplete="off">
+                <fieldset><br>
+                    <div class="card">
+                        <div style="text-align:center">
+                            <img src="\assets\image\dorm.png" class="widthimage" alt="...">
+                        </div>
+                    </div><br>
+                    <div class="text-center"><label for="inputPassword4">
+                            <h5>รูปห้องพัก</h5>
+                        </label></div><br>
+                    <!-- <div class="form-row">
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="validatedCustomFile" value="room_img"
+                                required>
+                            <label class="custom-file-label" for="validatedCustomFile" formControlName="room_img">Choose
+                                file...</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="text-center"><label for="inputPassword4"><h5>รูปห้องพัก</h5></label></div>
+                            <input class="form-control" placeholder="" formControlName="room_img" type="text"
+                                required />
+                        </div>
+                    </div> -->
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">
+                                <h5>เบอร์ห้อง</h5>
+                            </label>
+                            <input class="form-control" placeholder="" formControlName="room_num" type="text" required
+                                disabled />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">
+                                <h5>ราคา</h5>
+                            </label>
+                            <input class="form-control" placeholder="" formControlName="room_price" type="number"
+                                required disabled />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputPassword4">
+                                <h5>ที่จอดรถ</h5>
+                            </label>
+                            <textarea class="form-control" formControlName="room_park" rows="3" disabled></textarea>
+                        </div>
+                    </div>
+                    <label for="inputPassword4">
+                        <h5>สิ่งอำนวยความสะดวก</h5>
+                    </label>
+                    <div class="card"><br>
+                        <div class="row">
+                            <div class="row text-center">
+                                <div class="col-md-3">
+                                    <label for="room_wifi"><u>ไวไฟ (Wi-Fi)</u></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wifi"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z" />
+                                                    <path
+                                                        d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z" />
+                                                </svg>&nbsp;
+                                                มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="1" formControlName="room_wifi" name="room_wifi" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="room_wifi"><br></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                                                </svg>&nbsp;
+                                                ไม่มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="0" formControlName="room_wifi" name="room_wifi" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                                <div class="col-md-3">
+                                    <label for="room_refri"><u>ตู้เย็น</u></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16"
+                                                    class="bi bi-layout-sidebar-reverse" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd" d="M11 14V2h1v12h-1z" />
+                                                </svg>&nbsp;
+                                                มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="1" formControlName="room_refri" name="room_refri" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="room_refri"><br></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                                                </svg>&nbsp;
+                                                ไม่มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="0" formControlName="room_refri" name="room_refri" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                                <div class="col-md-3"><br>
+                                    <label for="room_macwas"><u>เครื่องซักผ้า</u></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-window"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd" d="M15 6H1V5h14v1z" />
+                                                    <path
+                                                        d="M3 3.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1.5 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1.5 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                                </svg>&nbsp;
+                                                มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="1" formControlName="room_macwas" name="room_macwas" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"><br>
+                                    <label for="room_macwas"><br></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                                                </svg>&nbsp;
+                                                ไม่มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="0" formControlName="room_macwas" name="room_macwas" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                                <div class="col-md-3"><br>
+                                    <label for="room_pet"><u>สัตว์เลี้ยง</u></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-bug"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.355.522a.5.5 0 0 1 .623.333l.291.956A4.979 4.979 0 0 1 8 1c1.007 0 1.946.298 2.731.811l.29-.956a.5.5 0 1 1 .957.29l-.41 1.352A4.985 4.985 0 0 1 13 6h.5a.5.5 0 0 0 .5-.5V5a.5.5 0 0 1 1 0v.5A1.5 1.5 0 0 1 13.5 7H13v1h1.5a.5.5 0 0 1 0 1H13v1h.5a1.5 1.5 0 0 1 1.5 1.5v.5a.5.5 0 1 1-1 0v-.5a.5.5 0 0 0-.5-.5H13a5 5 0 0 1-10 0h-.5a.5.5 0 0 0-.5.5v.5a.5.5 0 1 1-1 0v-.5A1.5 1.5 0 0 1 2.5 10H3V9H1.5a.5.5 0 0 1 0-1H3V7h-.5A1.5 1.5 0 0 1 1 5.5V5a.5.5 0 0 1 1 0v.5a.5.5 0 0 0 .5.5H3c0-1.364.547-2.601 1.432-3.503l-.41-1.352a.5.5 0 0 1 .333-.623zM4 7v4a4 4 0 0 0 3.5 3.97V7H4zm4.5 0v7.97A4 4 0 0 0 12 11V7H8.5zM12 6H4a3.99 3.99 0 0 1 1.333-2.982A3.983 3.983 0 0 1 8 2c1.025 0 1.959.385 2.666 1.018A3.989 3.989 0 0 1 12 6z" />
+                                                </svg>&nbsp;
+                                                มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="1" formControlName="room_pet" name="room_pet" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"><br>
+                                    <label for="room_pet"><br></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                                                </svg>&nbsp;
+                                                ไม่มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="0" formControlName="room_pet" name="room_pet" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                                <div class="col-md-3"><br>
+                                    <label for="room_heater"><u>เครื่องทำน้ำอุ่น</u></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-tablet"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M12 1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
+                                                    <path fill-rule="evenodd" d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                                </svg>&nbsp;
+                                                มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="1" formControlName="room_heater" name="room_heater" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"><br>
+                                    <label for="room_heater"><br></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                                                </svg>&nbsp;
+                                                ไม่มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="0" formControlName="room_heater" name="room_heater" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                                <div class="col-md-3"><br>
+                                    <label for="room_air"><u>แอร์</u></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16"
+                                                    class="bi bi-credit-card-2-back" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 3H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z" />
+                                                    <path
+                                                        d="M11 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zM1 9h14v2H1V9z" />
+                                                </svg>&nbsp;
+                                                มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="1" formControlName="room_air" name="room_air" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"><br>
+                                    <label for="room_air"><br></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                                                </svg>&nbsp;
+                                                ไม่มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="0" formControlName="room_air" name="room_air" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                                <div class="col-md-3"><br>
+                                    <label for="room_tv"><u>ทีวี</u></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-display"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M5.75 13.5c.167-.333.25-.833.25-1.5h4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M13.991 3H2c-.325 0-.502.078-.602.145a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2z" />
+                                                </svg>&nbsp;
+                                                มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="1" formControlName="room_tv" name="room_tv" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"><br>
+                                    <label for="room_tv"><br></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                                                </svg>&nbsp;
+                                                ไม่มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="0" formControlName="room_tv" name="room_tv" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                                <div class="col-md-3"><br>
+                                    <label for="room_fan"><u>พัดลม</u></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-geo"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11 4a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                                    <path d="M7.5 4h1v9a.5.5 0 0 1-1 0V4z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M6.489 12.095a.5.5 0 0 1-.383.594c-.565.123-1.003.292-1.286.472-.302.192-.32.321-.32.339 0 .013.005.085.146.21.14.124.372.26.701.382.655.246 1.593.408 2.653.408s1.998-.162 2.653-.408c.329-.123.56-.258.701-.382.14-.125.146-.197.146-.21 0-.018-.018-.147-.32-.339-.283-.18-.721-.35-1.286-.472a.5.5 0 1 1 .212-.977c.63.137 1.193.34 1.61.606.4.253.784.645.784 1.182 0 .402-.219.724-.483.958-.264.235-.618.423-1.013.57-.793.298-1.855.472-3.004.472s-2.21-.174-3.004-.471c-.395-.148-.749-.336-1.013-.571-.264-.234-.483-.556-.483-.958 0-.537.384-.929.783-1.182.418-.266.98-.47 1.611-.606a.5.5 0 0 1 .595.383z" />
+                                                </svg>&nbsp;
+                                                มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="1" formControlName="room_fan" name="room_fan" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"><br>
+                                    <label for="room_fan"><br></label><br><br>
+                                    <div class="form-check form-check-inline">
+                                        <label class="con">
+                                            <h6>
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x-square"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                                                </svg>&nbsp;
+                                                ไม่มี</h6>
+                                            <input type="radio" checked="checked" name="radio" id="exampleRadios1"
+                                                value="0" formControlName="room_fan" name="room_fan" disabled>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div><br><br>
+                            </div>
+                        </div><br>
+                    </div>
+                    <p></p>
+                    <label for="inputPassword4">
+                        <h5>สถานะห้อง</h5>
+                    </label>
+                    <div class="card text-center"><br>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-inline" checked>
+                                    <label class="con">
+                                        <h6>
+                                            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-open"
+                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z" />
+                                                <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z" />
+                                            </svg>&nbsp;
+                                            ว่าง</h6>
+                                        <input class="form-check-input" type="radio" name="exampleRadios"
+                                            id="exampleRadios1" formControlName="room_status" name="room_status"
+                                            value="ว่าง" checked disabled>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-inline" checked>
+                                    <label class="con">
+                                        <h6>
+                                            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-closed"
+                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2zm1 0v13h8V2H4z" />
+                                                <path d="M7 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z" />
+                                            </svg>&nbsp;
+                                            ไม่ว่าง</h6>
+                                        <input class="form-check-input" type="radio" name="exampleRadios"
+                                            id="exampleRadios1" formControlName="room_status" name="room_status"
+                                            value="ไม่ว่าง" checked disabled>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div><br>
+                    </div><br>
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <button class="btn btn-lg btn-primary" (click)="submitForm()">
+                                &nbsp;&nbsp;&nbsp;จอง&nbsp;&nbsp;&nbsp;
+                            </button>
+                        </div>
+                    </div><br>
+                </fieldset>
+            </form>
         </div>
-    </div>
+    </div><br>
 </div>

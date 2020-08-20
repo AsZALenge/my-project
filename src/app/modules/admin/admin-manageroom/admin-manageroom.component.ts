@@ -11,25 +11,24 @@ export class AdminManageroomComponent implements OnInit {
   roomList: Array<any>;
   product;
 
-  constructor( private shaerdService: ShaerdService,
+  constructor(private shaerdService: ShaerdService,
     private router: Router) { }
 
-    ngOnInit(): void {
-      this.getProductList();
-    }
-  
-    getProductList() {
-      this.shaerdService.getAllRoom().subscribe((data) => {
-        console.log('LOGGGG LISTSHOP', data);
-        this.roomList = data
-      });
-    };
-  
-    onShow(data) {
-      this.shaerdService.getRoomBy_id(data.room_id).subscribe((res) => {
-        console.log('LOGGGG LISTSHOP', res);
-        this.product = res;
-        this.router.navigate(['']);
-      });
-    }
+  ngOnInit(): void {
+    this.getProductList();
+  }
+
+  getProductList() {
+    this.shaerdService.getAllRoom().subscribe((data) => {
+      console.log('LOGGGG getAllRoom', data);
+      this.roomList = data
+    });
+  };
+
+  onDeleteroom(data) {
+    this.shaerdService.deleteRoomByRoom_id(data.room_id).subscribe((res) => {
+      window.location.reload();
+      console.log('LOGGGG DELETEROOM', res);
+    });
+  }
 }

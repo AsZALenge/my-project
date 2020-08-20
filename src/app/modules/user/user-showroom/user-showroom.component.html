@@ -1,17 +1,21 @@
 <div class="container">
-    <div class="row">
-        <div *ngFor="let data of shopList"  class="col-xl-4">
-            <div class="card" style="width: 18rem;">
-                <img src="\assets\image\dorm.png" class="card-img-top">
-                <div class="card-body">
-                    <p class="card-text">{{data.room_num}}</p>
-                    <p class="card-text">{{data.room_price}}</p>
-                    <ul>
-                        <button type="button" class="btn btn-outline-success" (click)="onShow(data)">ดูห้อง</button>
-                    </ul>
+    <div class="card" style="background-color: #E1ECF9;">
+        <div class="text-center col-md-10 offset-md-1"><br>
+            <h4 class="text-center">หอพัก.....</h4>
+            <div class="row">
+                <div *ngFor="let data of roomList" class="col-xl-4"><br>
+                    <div class="card" style="width: 18rem;">
+                        <img src="\assets\image\dorm.png" class="card-img-top">
+                        <div class="card-body">
+                            <p class="card-text">ห้อง : {{data.room_num}}</p>
+                            <p class="card-text">ราคา : {{data.room_price}}</p>
+                            <p class="card-text">สถานะ : {{data.room_status}}</p>
+                            <button type="button" class="btn btn-outline-primary"
+                                (click)="onShowdetail(data)">ดูรายละเอียด</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div><br>
         </div>
-
     </div>
-</div>
+</div><br>

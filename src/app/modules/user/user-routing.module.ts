@@ -10,12 +10,14 @@ import { UserShowdormComponent } from './user-showdorm/user-showdorm.component';
 import { UserShowroomComponent } from './user-showroom/user-showroom.component';
 import { UserUpdateprofileComponent } from './user-updateprofile/user-updateprofile.component';
 import { UserUploadpaymentComponent } from './user-uploadpayment/user-uploadpayment.component';
+import { UserShowreserComponent } from './user-showreser/user-showreser.component';
 
 const routes: Routes = [
     { path: '', component: UserHomeComponent },
     { path: 'payment', component: UserPaymentComponent },
     { path: 'profile', component: UserProfileComponent },
     { path: 'reserInformation', component: UserReserinformationComponent },
+    { path: 'showreser/:mem_id', component: UserShowreserComponent },
     { path: 'search', component: UserSearchComponent },
     { path: 'selectRoom/:room_id', component: UserSelectroomComponent },
     { path: 'showDorm', component: UserShowdormComponent },

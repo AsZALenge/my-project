@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShaerdService } from 'src/app/shared/service/shaerd.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-registerdorm',
@@ -8,47 +9,50 @@ import { ShaerdService } from 'src/app/shared/service/shaerd.service';
   styleUrls: ['./home-registerdorm.component.css']
 })
 export class HomeRegisterdormComponent implements OnInit {
-    registerFormDorm: FormGroup;
+  registerForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private shaerdService: ShaerdService
+    private shaerdService: ShaerdService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.registerFormDorm = this.fb.group({
-      dorm_owner: ['', [Validators.required]],
-      dorm_password: ['', [Validators.required, Validators.minLength(8)]],
-      dorm_name: ['', [Validators.required]],
-      dorm_citizen: ['', [Validators.required, Validators.minLength(13)]],
-      dorm_tel: ['', [Validators.required, Validators.minLength(10)]],
-      dorm_address: ['', [Validators.required]],
-      dorm_numbank: ['', [Validators.required, Validators.minLength(10)]],
-      dorm_namebank: ['', [Validators.required]],
-      dorm_img: ['', [Validators.required]],
+    this.registerForm = this.fb.group({
+      first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      citizen: ['', [Validators.required, Validators.minLength(13)]],
+      email: ['', [Validators.required]],
+      tel: ['', [Validators.required, Validators.minLength(10)]],
+      gender: ['', [Validators.required]],
+      role: ['3', [Validators.required]]
     });
   }
 
   // save
   submitForm() {
     // case notfound in condition
-    if (this.registerFormDorm.invalid) {
+    if (this.registerForm.invalid) {
       return false;
 
     } else { // case success
-      console.log(this.registerFormDorm.value);
+      console.log(this.registerForm.value);
+      console.log('LOG DATA FN() >>>submitForm<<<::', this.registerForm.value);
+      this.router.navigate(['/home/login']);
       // register
-      this.shaerdService.registerdorm(this.registerFormDorm.value).subscribe(
-        (error) => console.log(error),
+      this.shaerdService.register(this.registerForm.value).subscribe(
+        (error) => console.log(error)
       );
     }
   }
 
   // reset
   resetForm() {
-    this.registerFormDorm.reset();
+    this.registerForm.reset();
   }
 
-  get form() { return this.registerFormDorm.controls; }
+  get form() { return this.registerForm.controls; }
 
 }
