@@ -59,8 +59,15 @@ export class ShaerdService {
   }
   //Dorm
 
+  public uploadImage(body: any) {
+    return this.http.post<any>(this.API_URL + '/upload/file', body, {responseType: 'text' as 'json'});
+  }
+
   public getDormByuserId(id: any) {
     return this.http.get<any>(this.API_URL + '/dorm-id/' + `${id}`);
+  }
+  public getRoomBydormId(dorm_id: any) {
+    return this.http.get<any>(this.API_URL + '/room-id/' + `${dorm_id}`);
   }
 
   public update(body: object) {

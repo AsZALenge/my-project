@@ -11,6 +11,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DormDormitoryComponent implements OnInit {
   detaildormForm: FormGroup;
+  API_URL_IMG = environment.api_url + "/images/"
+  dorm_img: string = ''
+  dataCard: { img: string; deteil: string; }[];
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +30,12 @@ export class DormDormitoryComponent implements OnInit {
     // patch value in response api to form
     this.patchValueForm();
 
+  }
+
+  getUrlImg(): string {
+    console.log('LOG >>>>> .dorm_img >>>>>:::',  this.API_URL_IMG + this.detaildormForm.value.dorm_img);
+    
+    return this.API_URL_IMG + this.detaildormForm.value.dorm_img;
   }
 
   initFormGroup() {
@@ -60,6 +69,8 @@ export class DormDormitoryComponent implements OnInit {
         dorm_numbank: res.dorm_numbank,
         dorm_img: res.dorm_img
       });
+      this.dorm_img = res.dorm_img;
+
       console.log(this.detaildormForm.value);
     });
   }

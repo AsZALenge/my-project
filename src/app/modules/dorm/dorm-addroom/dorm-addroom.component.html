@@ -83,18 +83,15 @@
                                 d="M2 7.846V7H1v.437c.291.207.632.35 1 .409zm-1 .737c.311.14.647.232 1 .271V15H1V8.583zm13 .271a3.354 3.354 0 0 0 1-.27V15h-1V8.854zm1-1.417c-.291.207-.632.35-1 .409V7h1v.437zM3 9.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5V15H7v-5H4v5H3V9.5zm6 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4zm1 .5v3h2v-3h-2z" />
                         </svg>&nbsp;
                         เพิ่มห้อง</h4><br>
-                    <div><label for="inputPassword4">
-                            <h5>รูปห้องพัก</h5>
-                        </label></div>
                     <div class="form-row">
-                        <div class="custom-file col-md-12">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" required
-                                formControlName="room_img" value="room_img">
-                            <label class="custom-file-label" for="validatedCustomFile"></label>
+                        <label for="room_img">เพิ่มรูปภาพ</label>
+                        <div class="form-group col-md-12">
+                            <input type="file" class="custom-file-input" id="room_img" (change)="uploadImage($event)"
+                                required>
+                            <label class="custom-file-label" for="validatedCustomFile">{{fileNameShow}}</label>
                             <div class="invalid-feedback">Example invalid custom file feedback</div>
                         </div>
-                    </div>
-                    <p>
+                    </div><br>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -507,6 +504,10 @@
                                 ยกเลิก
                             </button>
                         </div>
+                    </div><br>
+
+                    <div *ngIf="loading" class="spinner-grow text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
                     </div><br>
                 </fieldset>
             </form>

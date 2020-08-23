@@ -1,46 +1,26 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
 <div class="container">
-    <div style="text-align:center">
-        <div class="bg-light">
-            <article class="card-body mx-auto" style="max-width: 400px;">
-                <h2 class="card-title mt-3 text-center">ค้นหาหอพัก</h2>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-search"></i> </span>
+    <div class="form-row">
+        <div class="form-group col-md-4 offset-md-4">
+            <input class="form-control form-control-lg" type="text" placeholder="ค้นหาหอพัก" [(ngModel)]="term">
+        </div>
+      </div>
+    <div class="card" style="background-color: #E1ECF9;">
+        <div class="text-center col-md-10 offset-md-1"><br>
+            <h4 class="text-center">ข้อมูลหอพัก</h4>
+            <div class="row">
+                <div *ngFor="let data of dormList | filter:term  let i = index" class="col-xl-4"><br>
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{API_URL_IMG + data.dorm_img}}" class="card-img-top">
+                        <div class="card-body">
+                            <p class="card-text">ชื่อหอพัก : {{data.dorm_name}}</p>
+                            <p class="card-text">ที่อยู่ : {{data.dorm_address}}</p>
+                            <p class="card-text">ชื่อธนาคาร : {{data.dorm_namebank}}</p>
+                            <p class="card-text">เลขบัญชีธนาคาร : {{data.dorm_numbank}}</p>
+                            
+                        </div>
                     </div>
-                    <input name="" class="form-control" placeholder="ชื่อหอพัก" type="text">
                 </div>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-book"></i> </span>
-                    </div>
-                    <select class="form-control">
-                        <option selected>ช่วงราคา</option>
-                        <option>1200-2000</option>
-                        <option>2000-3000</option>
-                        <option>3000-4000</option>
-                        <option>5000-6000</option>
-                    </select>
-                </div>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                    </div>
-                    <select class="form-control">
-                        <option selected>จำนวนผู้พัก</option>
-                        <option>1 คน</option>
-                        <option>2 คน</option>
-                        <option>3 คน</option>
-                        <option>4 คน</option>
-                        <option>5 คน</option>
-                    </select>
-                </div>
-                <button type="button" class="btn btn-secondary  btn-lg btn-block">ค้นหา</button>
-            </article>
+            </div><br>
         </div>
     </div>
-</div>
+</div><br>

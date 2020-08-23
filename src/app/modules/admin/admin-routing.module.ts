@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: '', component: AdminHomeComponent },
     { path: 'search', component: AdminSearchComponent },
     { path: 'manage', component: AdminManageComponent },
-    { path: 'manageRoom', component: AdminManageroomComponent },
+    { path: 'manageRoom/:dorm_id', component: AdminManageroomComponent },
     { path: 'showDorm', component: AdminShowdormComponent },
 ];
 

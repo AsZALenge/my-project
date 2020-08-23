@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShaerdService } from 'src/app/shared/service/shaerd.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -10,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class DormSelectroomupdateComponent implements OnInit {
   roomList: Array<any>;
-
-
+  API_URL_IMG = environment.api_url + "/images/"
+  
   constructor(
     private shaerdService: ShaerdService,
     private router: Router
@@ -20,11 +21,18 @@ export class DormSelectroomupdateComponent implements OnInit {
   ngOnInit(): void {
     this.getAllroomList();
   }
-
+  
   getAllroomList() {
-    this.shaerdService.getAllRoom().subscribe((data) => {
-      console.log('LOGGGG getAllRoom', data);
-      this.roomList = data
+    const dorm = localStorage.getItem('dorm');
+    console.log('patchValueForm : userId => ', dorm);
+
+    this.shaerdService.getDormByuserId(dorm).subscribe((dataUser) => {
+      console.log('LOGGGG dataUser', dataUser);
+
+      this.shaerdService.getRoomBydormId(dataUser.dorm_id).subscribe((dataDorm) => {
+        console.log('LOGGGG dataDorm', dataDorm);
+        this.roomList = dataDorm;
+      });
     });
   };
 

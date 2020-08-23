@@ -42,11 +42,12 @@
                         </div>
                     </div>
                     <div class="form-row">
+                        <label for="dorm_img">เพิ่มรูปภาพ</label>
                         <div class="form-group col-md-12">
-                            <label for="inputPassword4">
-                                <h6>รูปหอพัก</h6>
-                            </label>
-                            <input class="form-control" placeholder="" formControlName="dorm_img" type="text" required />
+                            <input type="file" class="custom-file-input" id="dorm_img" (change)="uploadImage($event)"
+                                required>
+                            <label class="custom-file-label" for="validatedCustomFile">{{fileNameShow}}</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div>
                         </div>
                     </div><br>
 

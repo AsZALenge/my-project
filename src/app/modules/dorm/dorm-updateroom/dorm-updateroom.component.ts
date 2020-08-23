@@ -10,6 +10,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class DormUpdateroomComponent implements OnInit {
   editRoom: FormGroup;
+  fileNameShow: any;
 
   constructor(
     private fb: FormBuilder,
@@ -19,7 +20,7 @@ export class DormUpdateroomComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.fileNameShow = 'Upload file Name';
     // init form group
     this.initFormGroup()
 
@@ -95,6 +96,30 @@ export class DormUpdateroomComponent implements OnInit {
       });
     }
   }
+
+  uploadImage(event) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.fileNameShow = file.name;
+        console.log(this.fileNameShow);
+        this.editRoom.patchValue({
+
+          room_img: file.name
+        });
+        // for upload
+        const formData = new FormData();
+        formData.append('file', file);
+        this.shaerdService.uploadImage(formData).subscribe(res => {
+          alert('UploadFile :: ' + res);
+        });
+
+      };
+    }
+  }
+
   cancelForm() {
     this.router.navigate(['/dorm/selectRoomUpdate']);
   }

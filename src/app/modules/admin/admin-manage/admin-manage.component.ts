@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShaerdService } from 'src/app/shared/service/shaerd.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin-manage',
@@ -10,8 +11,12 @@ import { Router } from '@angular/router';
 export class AdminManageComponent implements OnInit {
   dormList: Array<any>;
   product;
-  constructor(private shaerdService: ShaerdService,
-    private router: Router) { }
+  API_URL_IMG = environment.api_url + "/images/"
+  
+  constructor(
+    private shaerdService: ShaerdService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.getDorm();
@@ -19,7 +24,7 @@ export class AdminManageComponent implements OnInit {
 
   getDorm() {
     this.shaerdService.getAllDorm().subscribe((data) => {
-      console.log('LOGGGG LISTSHOP', data);
+      console.log('LOGGGG getAllDorm', data);
       this.dormList = data
     });
   };
@@ -28,7 +33,7 @@ export class AdminManageComponent implements OnInit {
     this.shaerdService.getDormBy_id(data.dorm_id).subscribe((res) => {
       console.log('LOGGGG getDormBy_id', res);
       this.product = res;
-      this.router.navigate(['/admin/manageRoom']);
+      this.router.navigate(['/admin/manageRoom',data.dorm_id]);
     });
   }
   onDeletedorm(data) {

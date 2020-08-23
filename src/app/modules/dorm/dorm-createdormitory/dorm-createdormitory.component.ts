@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DormCreatedormitoryComponent implements OnInit {
   createdormForm: FormGroup;
+  fileNameShow: any;
 
   constructor(
     private fb: FormBuilder,
@@ -18,6 +19,8 @@ export class DormCreatedormitoryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.fileNameShow = 'Upload file Name';
+
     const userId = localStorage.getItem('dorm');
 
     console.log('USER ID ::::: ' + userId);
@@ -31,34 +34,8 @@ export class DormCreatedormitoryComponent implements OnInit {
       dorm_img: ['', [Validators.required]],
     });
   }
-
-  // patchValueForm() {
-  //   // get shop_id in request parameter router
-  //   this.username = localStorage.getItem('user');
-  //   console.log('patchValueForm : username => ', this.username);
-
-  //   this.shaerdService.getUser(this.username).subscribe((res) => {
-  //     console.log('patchValueForm : Response => ', res);
-
-  //     // patch value to form
-  //     this.createdormForm.patchValue({
-  //       id: res.id,
-  //       first_name: res.first_name,
-  //       last_name: res.last_name,
-  //       username: res.username,
-  //       password: res.password,
-  //       address: res.address,
-  //       tel: res.tel,
-  //       gender: res.gender,
-  //     });
-  //     console.log(this.createdormForm.value);
-  //   });
-
-  // }
-
   // save
   submitForm() {
-
     console.log('LOG DATA FN() ON invalid >>>submitForm valuevalue<<<::', this.createdormForm.value);
     if (this.createdormForm.invalid) {
       return false;
@@ -74,17 +51,25 @@ export class DormCreatedormitoryComponent implements OnInit {
     }
   }
 
-  saveRange(event) {
+  uploadImage(event) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
       reader.onload = () => {
-        console.log('LOGGGGGGGGG FILE NAME >>:', file.name);
-        console.log('LOGGGGGGGGG DATA saveRange>>:', reader.result);
+        this.fileNameShow = file.name;
+        console.log(this.fileNameShow);
         this.createdormForm.patchValue({
+
           dorm_img: file.name
         });
+        // for upload
+        const formData = new FormData();
+        formData.append('file', file);
+        this.shaerdService.uploadImage(formData).subscribe(res => {
+          alert('UploadFile :: ' + res);
+        });
+
       };
     }
   }

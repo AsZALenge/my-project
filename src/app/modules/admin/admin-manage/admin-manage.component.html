@@ -5,11 +5,12 @@
             <div class="row">
                 <div *ngFor="let data of dormList" class="col-xl-4"><br>
                     <div class="card" style="width: 18rem;">
-                        <img src="\assets\image\dorm.png" class="card-img-top">
+                        <img src="{{API_URL_IMG + data.dorm_img}}" class="card-img-top">
                         <div class="card-body">
                             <p class="card-text">ชื่อหอพัก : {{data.dorm_name}}</p>
-                            <p class="card-text">ชื่อผู้ดูแลหอพัก : {{data.dorm_owner}}</p>
-                            <p class="card-text">เบอร์ติดต่อ : {{data.dorm_tel}}</p>
+                            <p class="card-text">ที่อยู่ : {{data.dorm_address}}</p>
+                            <p class="card-text">ชื่อธนาคาร : {{data.dorm_namebank}}</p>
+                            <p class="card-text">เลขบัญชีธนาคาร : {{data.dorm_numbank}}</p>
                             <button type="button" class="btn btn-outline-warning"
                                 (click)="onShow(data)">ดูข้อมูล</button>&nbsp;
                             <button type="button" class="btn btn-outline-danger"
