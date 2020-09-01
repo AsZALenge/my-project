@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ShaerdService } from 'src/app/shared/service/shaerd.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-selectroom',
@@ -9,7 +10,10 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./user-selectroom.component.css']
 })
 export class UserSelectroomComponent implements OnInit {
-  showRoom: FormGroup;
+  username: string;
+  userShow: FormGroup;
+  data: any;
+  API_URL_IMG = environment.api_url + "/images/"
 
   constructor(
     private fb: FormBuilder,
@@ -21,65 +25,72 @@ export class UserSelectroomComponent implements OnInit {
   ngOnInit(): void {
 
     // init form group
-    this.initFormGroup()
+    this.initFormGroup();
 
     // patch value in response api to form 
-    this.patchValueForm()
+    this.patchValueForm();
+
+    this.RoomMem();
+
+    // this.DormMem();
 
   }
 
   initFormGroup() {
-    this.showRoom = this.fb.group({
-      room_num: ['', [Validators.required]],
-      room_img: ['', [Validators.required]],
-      room_price: ['', [Validators.required]],
-      room_park: ['', [Validators.required]],
-      room_wifi: ['', [Validators.required]],
-      room_refri: ['', [Validators.required]],
-      room_macwas: ['', [Validators.required]],
-      room_pet: ['', [Validators.required]],
-      room_heater: ['', [Validators.required]],
-      room_air: ['', [Validators.required]],
-      room_tv: ['', [Validators.required]],
-      room_fan: ['', [Validators.required]],
-      room_status: ['', [Validators.required]],
-      dorm_id: ['', [Validators.required]],
-      room_id: ['', [Validators.required]]
+    this.userShow = this.fb.group({
+      id: [''],
+      first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      citizen: ['', [Validators.required, Validators.minLength(13)]],
+      email: ['', [Validators.required]],
+      tel: ['', [Validators.required, Validators.minLength(10)]],
+      gender: ['', [Validators.required]],
+      role: ['2', [Validators.required]]
     });
   }
 
-  async patchValueForm() {
-    // get pd_id in request parameter router
+  patchValueForm() {
+    // get shop_id in request parameter router
+    this.username = localStorage.getItem('user');
+    console.log('patchValueForm : username => ', this.username);
+
+    this.shaerdService.getUser(this.username).subscribe((res) => {
+      console.log('patchValueForm : Response => ', res);
+
+      // patch value to form
+      this.userShow.patchValue({
+        id: res.id,
+        first_name: res.first_name,
+        last_name: res.last_name,
+        username: res.username,
+        password: res.password,
+        citizen: res.citizen,
+        email: res.email,
+        tel: res.tel,
+        gender: res.gender,
+        role: res.role
+      });
+      console.log(this.userShow.value);
+    });
+
+  }
+
+  async RoomMem() {
+    debugger;
     let roomId = this.activatedroute.snapshot.paramMap.get("room_id");
     console.log('patchValueForm : room_id => ', roomId);
 
-    await this.shaerdService.getRoomById(roomId).subscribe((res) => {
-      console.log('patchValueForm : Response getRoomById => ', res);
-
-      // patch value to form
-      this.showRoom.patchValue({
-        room_num: res.room_num,
-        room_img: res.room_img,
-        room_price: res.room_price,
-        room_park: res.room_park,
-        room_wifi: res.room_wifi,
-        room_refri: res.room_refri,
-        room_macwas: res.room_macwas,
-        room_pet: res.room_pet,
-        room_heater: res.room_heater,
-        room_air: res.room_air,
-        room_tv: res.room_tv,
-        room_fan: res.room_fan,
-        room_status: res.room_status,
-        room_id: res.room_id,
-        dorm_id: res.dorm_id
-      });
-      console.log('showRoom => ', this.showRoom.value);
+    await this.shaerdService.getRoomBy_id(roomId).subscribe((data) => {
+      console.log('patchValueForm : Response getRoomBy_id => ', data);
+      this.data = data;
+      console.log('data : Response getRoomBy_id => ', this.data);
     });
   }
-  get form() { return this.showRoom.controls; }
 
-  submitForm(){
-    this.router.navigate(['/user/payment']);
+  get form() { return this.userShow.controls; }
+
+  submitForm() {
   }
 }

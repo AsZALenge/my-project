@@ -1,3 +1,10 @@
 .widthimage{
     width:40%;
 }
+.text-cl {
+    color: #4290e9;
+}
+.bg-card {
+    background-color: #f0f7ff;
+    padding: 10px;
+}

@@ -21,7 +21,7 @@ const routes: Routes = [
     { path: 'search', component: UserSearchComponent },
     { path: 'selectRoom/:room_id', component: UserSelectroomComponent },
     { path: 'showDorm', component: UserShowdormComponent },
-    { path: 'showRoom', component: UserShowroomComponent },
+    { path: 'showRoom/:dorm_id', component: UserShowroomComponent },
     { path: 'updateProfile', component: UserUpdateprofileComponent },
     { path: 'uploadPayment', component: UserUploadpaymentComponent },
 ];

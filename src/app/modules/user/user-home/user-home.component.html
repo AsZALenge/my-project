@@ -1,22 +1,121 @@
-<div class="container">
-    <div class="card" style="background-color: #E1ECF9;">
-        <div class="text-center col-md-10 offset-md-1"><br>
-            <h4 class="text-center">ข้อมูลหอพัก</h4>
-            <div class="row">
-                <div *ngFor="let data of dormList" class="col-xl-4"><br>
-                    <div class="card" style="width: 18rem;">
-                        <img src="\assets\image\dorm.png" class="card-img-top">
-                        <div class="card-body">
-                            <p class="card-text">ชื่อหอพัก : {{data.dorm_name}}</p>
-                            <p class="card-text">ชื่อผู้ดูแลหอพัก : {{data.dorm_owner}}</p>
-                            <p class="card-text">ที่อยู่ : {{data.dorm_address}}</p>
-                            <p class="card-text">เบอร์ติดต่อ : {{data.dorm_tel}}</p>
-                            <button class="btn btn-lg btn-light"
-                                (click)="onShow(data)" style="background-color: #FDC168;">ดูห้องพัก</button>
+<div class="row">
+    <div class="col-2"><br><br>
+        <ul>
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item " data-toggle="list"
+                    class="list-group-item list-group-item-action list-group-item-primary text-white search-box">ประเภทหอพัก</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" role="tab"
+                    aria-controls="profile" (click)="getDormList('1')">หอพัก</a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" role="tab"
+                    aria-controls="messages" (click)="getDormList('2')">อพาร์ทเม้นท์</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" role="tab"
+                    aria-controls="settings" (click)="getDormList('0')">หอพักทั้งหมด</a>
+            </div>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h4 class="text-center">ค้นหาหอพัก อพาร์ทเม้นท์ ทั้งรายเดือน รายวัน และอีกมากมาย</h4>
+        <div class="col-xl-12">
+            <div class="card mb-1 text-white bg search-box">
+                <form>
+                    <div class="form-row align-items-center">
+                        <div class="col-sm-4 my-1">
+                            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">ชื่อหอพัก</div>
+                                </div>
+                                <input type="text" class="form-control" id="inlineFormInputGroupUsername"
+                                    placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 my-1">
+                            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">ราคา</div>
+                                </div>
+                                <input type="text" class="form-control" id="inlineFormInputGroupUsername"
+                                    placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 my-1">
+                            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">สถานะ</div>
+                                </div>
+                                <select class="form-control">
+                                    <option selected>กรุณาเลือกสถานะ</option>
+                                    <option>รายเดือน</option>
+                                    <option>รายวัน</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-auto my-1">
+                            <button type="submit" class="btn btn-light">ค้นหา</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div *ngIf="statusType === '0'">
+            <div *ngFor="let data of dormList" class="col-xl-12"><br>
+                <div class="card mb-1" style="max-width: 2000px;">
+                    <div class="row no-gutters">
+                        <div class="card-body" style="max-width: 330px;">
+                            <img src="{{API_URL_IMG + data.dorm_img}}" class="card-img-top">
+                        </div>
+                        <div class="form-row col-md-8">
+                            <div class="form-group col-md-10"><br>
+                                <h4 class="card-title" style="color: #0057b9;">{{data.dorm_name}}</h4>
+                                <p class="card-text">ที่อยู่ : {{data.dorm_address}}</p>
+                                <p class="card-text">ค่าน้ำ : {{data.dorm_waterbill}} &nbsp;&nbsp; ค่าไฟ :
+                                    {{data.dorm_electricbill}}</p>
+                                <p class="card-text">เปิดให้เช่า : {{data.dorm_status}}</p>
+                                <p class="card-text">{{data.dorm_pricemonth_start}} - {{data.dorm_pricemonth_end}}
+                                    บาท/เดือน &nbsp;&nbsp;
+                                    {{data.dorm_pricedate_start}} - {{data.dorm_pricedate_end}} บาท/วัน</p>
+                            </div>
+                            <div class="form-group col-md-2"><br><br>
+                                <button class="btn btn-lg btn-primary" style="background-color: #236AB9;"
+                                    (click)="onShow(data)">ดูห้อง</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div><br>
+            </div>
+        </div>
+
+        <div *ngIf="statusType !== '0'">
+            <div *ngFor="let data of DormTypeList" class="col-xl-12"><br>
+                <div class="card mb-1" style="max-width: 2000px;">
+                    <div class="row no-gutters">
+                        <div class="card-body" style="max-width: 330px;">
+                            <img src="{{API_URL_IMG + data.dorm_img}}" class="card-img-top">
+                        </div>
+                        <div class="form-row col-md-8">
+                            <div class="form-group col-md-10"><br>
+                                <h4 class="card-title" style="color: #0057b9;">{{data.dorm_name}}</h4>
+                                <p class="card-text">ที่อยู่ : {{data.dorm_address}}</p>
+                                <p class="card-text">ค่าน้ำ : {{data.dorm_waterbill}} &nbsp;&nbsp; ค่าไฟ :
+                                    {{data.dorm_electricbill}}</p>
+                                <p class="card-text">เปิดให้เช่า : {{data.dorm_status}}</p>
+                                <p class="card-text">{{data.dorm_pricemonth_start}} - {{data.dorm_pricemonth_end}}
+                                    บาท/เดือน &nbsp;&nbsp;
+                                    {{data.dorm_pricedate_start}} - {{data.dorm_pricedate_end}} บาท/วัน</p>
+                            </div>
+                            <div class="form-group col-md-2"><br><br>
+                                <button class="btn btn-lg btn-primary" style="background-color: #236AB9;"
+                                    (click)="onShow(data)">ดูห้อง</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div><br>

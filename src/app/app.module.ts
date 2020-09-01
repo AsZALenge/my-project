@@ -4,9 +4,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
-import { AuthenInterceptor } from './helpers/authen.interceptor';
-import { ErrorInterceptor } from './helpers/error.interceptor';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -17,6 +15,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgSelectModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AuthenInterceptor, multi: true },

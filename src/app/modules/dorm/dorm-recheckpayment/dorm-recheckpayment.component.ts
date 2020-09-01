@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShaerdService } from 'src/app/shared/service/shaerd.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dorm-recheckpayment',
@@ -10,7 +11,9 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class DormRecheckpaymentComponent implements OnInit {
   showPay: FormGroup;
-
+  API_URL_IMG = environment.api_url + "/images/"
+  pay_pic: string = ''
+  
   constructor(
     private fb: FormBuilder,
     private shaerdService: ShaerdService,
@@ -26,10 +29,18 @@ export class DormRecheckpaymentComponent implements OnInit {
     this.patchValueForm()
 
   }
+
+  getUrlImg(): string {
+    console.log('LOG >>>>> .pay_pic >>>>>:::',  this.API_URL_IMG + this.showPay.value.pay_pic);
+    
+    return this.API_URL_IMG + this.showPay.value.pay_pic;
+  }
+
   initFormGroup() {
     this.showPay = this.fb.group({
       pay_id: ['', [Validators.required]],
       mem_id: ['', [Validators.required]],
+      dorm_id: ['', [Validators.required]],
       pay_pic: ['', [Validators.required]],
       pay_price: ['', [Validators.required]],
       pay_date: ['', [Validators.required]],
@@ -49,6 +60,7 @@ export class DormRecheckpaymentComponent implements OnInit {
       this.showPay.patchValue({
         pay_id: res.pay_id,
         mem_id: res.mem_id,
+        dorm_id: res.dorm_id,
         pay_pic: res.pay_pic,
         pay_price: res.pay_price,
         pay_date: res.pay_date,
@@ -59,20 +71,42 @@ export class DormRecheckpaymentComponent implements OnInit {
   }
   get form() { return this.showPay.controls; }
 
-  // save
   submitForm() {
-    // // case notfound in condition
-    // if (this.showreser.invalid) {
-    //   return false;
+    debugger;
+    // case notfound in condition
+    console.log(this.showPay.value);
+    if (this.showPay.invalid) {
+      return false;
 
-    // } else { // case success
-    //   console.log(this.showreser.value);
-    //   console.log('LOG DATA FN() ON invalid >>>showreser<<<::', this.showreser.value);
+    } else { // case success
+      console.log(this.showPay.value);
+      console.log('LOG 111111111111111 DATA FN() ON invalid >>>showPay<<<::', this.showPay.value);
 
-    //   this.shaerdService.updateRoom(this.showreser.value).subscribe((res) => {
-    //     console.log('LOGGGG LISTSHOP', res);
+      // register
+      this.shaerdService.updatePay(this.showPay.value).subscribe((res) => {
+        console.log('LOGGGG updatePay', res);
+        // if (res.id) {
         this.router.navigate(['/dorm/checkPayment']);
-      // });
-    // }
+        // }
+
+      });
+    }
   }
+
+  // // save
+  // submitForm() {
+  //   // // case notfound in condition
+  //   if (this.showPay.invalid) {
+  //     return false;
+
+  //   } else { // case success
+  //     console.log(this.showPay.value);
+  //     console.log('LOG DATA FN() ON invalid >>>showreser<<<::', this.showPay.value);
+
+  //     this.shaerdService.updatePay(this.showPay.value).subscribe((res) => {
+  //       console.log('LOGGGG LISTSHOP', res);
+  //       this.router.navigate(['/dorm/checkPayment']);
+  //     });
+  //   }
+  // }
 }

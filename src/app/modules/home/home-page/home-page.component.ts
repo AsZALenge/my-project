@@ -33,7 +33,7 @@ export class HomePageComponent implements OnInit {
     this.shaerdService.getDormBy_id(data.dorm_id).subscribe((res) => {
       console.log('LOGGGG getDormBy_id', res);
       this.product = res;
-      this.router.navigate(['/admin/manageRoom', data.dorm_id]);
+      this.router.navigate(['/user/showRoom', data.dorm_id]);
     });
   }
 }

@@ -3,24 +3,29 @@
         <div class="form-group col-md-4 offset-md-4">
             <input class="form-control form-control-lg" type="text" placeholder="ค้นหาหอพัก" [(ngModel)]="term">
         </div>
-      </div>
-    <div class="card" style="background-color: #E1ECF9;">
-        <div class="text-center col-md-10 offset-md-1"><br>
-            <h4 class="text-center">ข้อมูลหอพัก</h4>
-            <div class="row">
-                <div *ngFor="let data of dormList | filter:term  let i = index" class="col-xl-4"><br>
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{API_URL_IMG + data.dorm_img}}" class="card-img-top">
-                        <div class="card-body">
-                            <p class="card-text">ชื่อหอพัก : {{data.dorm_name}}</p>
-                            <p class="card-text">ที่อยู่ : {{data.dorm_address}}</p>
-                            <p class="card-text">ชื่อธนาคาร : {{data.dorm_namebank}}</p>
-                            <p class="card-text">เลขบัญชีธนาคาร : {{data.dorm_numbank}}</p>
-                            
-                        </div>
+    </div>
+    <h4 class="text-center">ข้อมูลหอพัก</h4>
+    <div *ngFor="let data of dormList | filter:term  let i = index" class="col-xl-12"><br>
+        <div class="card mb-1" style="max-width: 2000px;">
+            <div class="row no-gutters">
+                <div class="card-body" style="max-width: 330px;">
+                    <img src="{{API_URL_IMG + data.dorm_img}}" class="card-img-top">
+                </div>
+                <div class="form-row col-md-8">
+                    <div class="form-group col-md-10"><br>
+                        <h4 class="card-title" style="color: #0057b9;">{{data.dorm_name}}</h4>
+                        <p class="card-text">ที่อยู่ : {{data.dorm_address}}</p>
+                        <p class="card-text">ค่าน้ำ : {{data.dorm_waterbill}} &nbsp;&nbsp; ค่าไฟ :
+                            {{data.dorm_electricbill}}</p>
+                        <p class="card-text">เปิดให้เช่า : {{data.dorm_status}}</p>
+                        <p class="card-text">{{data.dorm_pricemonth}} บาท/เดือน &nbsp;&nbsp; {{data.dorm_pricedate}}
+                            บาท/วัน</p>
+                    </div>
+                    <div class="form-group col-md-2"><br><br>
+                        <button class="btn btn-lg btn-primary" style="background-color: #236AB9;" (click)="onShow(data)">ดูห้อง</button>
                     </div>
                 </div>
-            </div><br>
+            </div>
         </div>
     </div>
 </div><br>

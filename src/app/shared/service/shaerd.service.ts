@@ -57,6 +57,14 @@ export class ShaerdService {
   public savePayment(body: any) {
     return this.http.post<any>(this.API_URL + '/pay/save', body, this.httpOption);
   }
+
+  public getConByDormId(dorm_id: any) {
+    return this.http.get<any>(this.API_URL + '/con-id/' + `${dorm_id}`);
+  }
+
+  public getDormByTypeId(body: any) {
+    return this.http.get<any>(this.API_URL + '/dorm-type/' + `${body}`);
+  }
   //Dorm
 
   public uploadImage(body: any) {
@@ -68,6 +76,21 @@ export class ShaerdService {
   }
   public getRoomBydormId(dorm_id: any) {
     return this.http.get<any>(this.API_URL + '/room-id/' + `${dorm_id}`);
+  }
+  public getMemBydormId(dorm_id: any) {
+    return this.http.get<any>(this.API_URL + '/mem-id/' + `${dorm_id}`);
+  }
+  public getPayBydormId(dorm_id: any) {
+    return this.http.get<any>(this.API_URL + '/pay-id/' + `${dorm_id}`);
+  }
+  public updatePay(body: any) {
+    return this.http.post<any>(this.API_URL + '/pay/update', body, this.httpOption);
+  }
+  public getMemById(id: any) {
+    return this.http.get<any>(this.API_URL + '/member/' + `${id}`);
+  }
+  public getDormByDormID(dorm_id: any) {
+    return this.http.get<any>(this.API_URL + '/dormitory/' + `${dorm_id}`);
   }
 
   public update(body: object) {

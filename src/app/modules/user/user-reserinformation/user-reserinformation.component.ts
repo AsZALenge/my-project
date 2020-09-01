@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShaerdService } from 'src/app/shared/service/shaerd.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-reserinformation',
@@ -9,25 +10,31 @@ import { Router } from '@angular/router';
 })
 export class UserReserinformationComponent implements OnInit {
   memberList: Array<any>;
-  product;
-  constructor(private shaerdService: ShaerdService,
-    private router: Router) { }
+  username: string;
+  room_id: string;
+
+  constructor(
+    private shaerdService: ShaerdService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.getMemberList();
+    this.getPayList();
   }
-  getMemberList() {
-    this.shaerdService.getAllMem().subscribe((data) => {
-      console.log('LOGGGG getAllMem', data);
-      this.memberList = data
-    });
-  };
+  getPayList() {
+    const dorm = localStorage.getItem('dorm');
+    console.log('patchValueForm : userId => ', dorm);
 
-  onShow(data) {
-    this.shaerdService.getMemBy_id(data.mem_id).subscribe((res) => {
-      console.log('LOGGGG getMemBy_id', res);
-      this.product = res;
-      this.router.navigate(['/user/showreser',data.mem_id]);
+    this.shaerdService.getMemById(dorm).subscribe((dataMem) => {
+      console.log('LOGGGG dataMem', dataMem);
+      this.memberList = dataMem;
     });
   }
+
+  // onShow(data) {
+  //   this.shaerdService.getMemBy_id(data.mem_id).subscribe((res) => {
+  //     console.log('LOGGGG getMemBy_id', res);
+  //     this.router.navigate(['/user/showreser', data.mem_id]);
+  //   });
+  // }
 }

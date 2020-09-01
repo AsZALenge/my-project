@@ -1,17 +1,23 @@
 <div class="container">
+    <h4 class="text-center">ข้อมูลการจองห้องพัก</h4><br>
     <table class="table table-hover">
         <thead class="thead" style="background-color: #E1ECF9;">
             <tr>
-                <th scope="col">จำนวนผู้ที่พัก</th>
+                <th scope="col">ห้อง</th>
                 <th scope="col">ราคาห้อง</th>
+                <th scope="col">จำนวนผู้ที่พัก</th>
+                <th scope="col">วันที่จอง</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of memberList">
-                <td>{{data.mem_add}}</td>
+                <td>{{data.room_id}}</td>
                 <td>{{data.room_price}}</td>
-                <td><button type="button" class="btn btn-outline-warning" (click)="onShow(data)">ดูข้อมูล</button></td>
+                <td>{{data.mem_add}}</td>
+                <td>{{data.mem_reserdate}}</td>
+                <td></td>
+                <!-- <td><button type="button" class="btn btn-outline-warning" (click)="onShow(data)">ดูข้อมูล</button></td> -->
             </tr>
         </tbody>
     </table>
