@@ -6,12 +6,12 @@ import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-user-selectroom',
-  templateUrl: './user-selectroom.component.html',
-  styleUrls: ['./user-selectroom.component.css'],
+  selector: 'app-home-member',
+  templateUrl: './home-member.component.html',
+  styleUrls: ['./home-member.component.css'],
   providers: [DatePipe]
 })
-export class UserSelectroomComponent implements OnInit {
+export class HomeMemberComponent implements OnInit {
   username: string;
   userShow: FormGroup;
   bankList: any;
@@ -19,7 +19,7 @@ export class UserSelectroomComponent implements OnInit {
   fileNameShow: any;
   API_URL_IMG = environment.api_url + "/images/"
   mockListSubject = [];
- 
+
   constructor(
     private fb: FormBuilder,
     private shaerdService: ShaerdService,
@@ -123,6 +123,7 @@ export class UserSelectroomComponent implements OnInit {
     debugger;
     this.userShow.patchValue({
       dorm_id: this.data.dorm_id,
+      id: '0',
       deposit_status: 'Y',
       mem_ref: this.datePipe.transform(new Date(), 'dd-MM-yyyy HH:mm:ss'),
       room_id: this.data.room_id,
@@ -141,7 +142,7 @@ export class UserSelectroomComponent implements OnInit {
     const name = this.userShow.controls.first_name.value + ' ' + this.userShow.controls.last_name.value;
     this.sendEmail(mockEmail, this.mockListSubject, name);
 
-    this.router.navigate(['/user/reserInformation']);
+    this.router.navigate(['/home']);
   }
 
 

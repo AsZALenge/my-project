@@ -4,19 +4,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-
 @Component({
-  selector: 'app-user-showroom',
-  templateUrl: './user-showroom.component.html',
-  styleUrls: ['./user-showroom.component.css']
+  selector: 'app-home-showroom',
+  templateUrl: './home-showroom.component.html',
+  styleUrls: ['./home-showroom.component.css']
 })
-export class UserShowroomComponent implements OnInit {
+export class HomeShowroomComponent implements OnInit {
   roomList: Array<any>;
   conList: Array<any>;
   dormList: Array<any>;
   a: FormGroup;
-  
+
   API_URL_IMG = environment.api_url + "/images/"
+
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +26,6 @@ export class UserShowroomComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getProductList();
     this.patchValueForm()
 
     this.initFormGroup()
@@ -59,7 +58,7 @@ export class UserShowroomComponent implements OnInit {
   select(data) {
     // this.shaerdService.getRoomBy_id(data.room_id).subscribe((res) => {
     console.log('LOGGGG select', data);
-    this.router.navigate(['/user/selectRoom', data.room_id]);
+    this.router.navigate(['/home/member', data.room_id]);
     // });
   }
 }

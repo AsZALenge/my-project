@@ -3,9 +3,7 @@
     <div class="card text">
       <div class="card-body">
         <h4 class="card-title text-center">
-          <div *ngIf="loading" class="spinner-grow text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>&nbsp;เข้าสู่ระบบ
+          เข้าสู่ระบบ
         </h4>
         <form [formGroup]="loginForm" accept-charset="UTF-8" autocomplete="off">
           <fieldset><br>
@@ -46,7 +44,9 @@
           </fieldset>
         </form>
         <button class="btn btn-lg btn-primary btn-block" (click)="login()" style="background-color: #236AB9;">
-          เข้าสู่ระบบ
+          <div *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>&nbsp;เข้าสู่ระบบ
         </button>
         <br>
       </div>

@@ -9,6 +9,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { HomeRegisteruserComponent } from './home-registeruser/home-registeruser.component';
 import { HomeRegisterdormComponent } from './home-registerdorm/home-registerdorm.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HomeShowroomComponent } from './home-showroom/home-showroom.component';
+import { HomeMemberComponent } from './home-member/home-member.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HomeLoginComponent,
     HomeRegisterComponent,
     HomeRegisteruserComponent,
-    HomeRegisterdormComponent
+    HomeRegisterdormComponent,
+    HomeShowroomComponent,
+    HomeMemberComponent
   ],
   imports: [
     CommonModule,

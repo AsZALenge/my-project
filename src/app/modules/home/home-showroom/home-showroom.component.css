@@ -1,0 +1,47 @@
+.text-room {
+    background-color: #297fe0;
+    padding: 10px;
+}
+.btn-sub {
+    background-color: #0071c2;
+    padding: 10px;
+}
+.bg-icon {
+    background-color: #ffd900;
+    padding: 10px;
+}
+
+.bg-card {
+    background-color: #4c76b2;
+    padding: 10px;
+}
+
+.bg-viwe {
+    background-color: #ebf3ff;
+    padding: 10px;
+}
+
+.bg-num {
+    color: #32a923;
+    padding: 10px;
+}
+
+.bg-con {
+    color: #32a923;
+    padding: 10px;
+}
+
+.bg-ta {
+    background-color: #ebf3ff;
+    padding: 10px;
+}
+
+.text-ta {
+    color: #0071c2;
+    padding: 10px;
+}
+
+.text-op {
+    color: #347B98;
+    padding: 10px;
+}

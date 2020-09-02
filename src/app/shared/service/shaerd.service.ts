@@ -18,6 +18,18 @@ export class ShaerdService {
     }),
   };
 
+  public saveMember(body: any) {
+    return this.http.post<any>(this.API_URL + '/mem/save', body, this.httpOption);
+  }
+
+  public getAllBank() {
+    return this.http.get<any>(this.API_URL + '/bank');
+  }
+
+  public sendEmail(email: any, listSubject: any, name: any){
+    return this.http.get<any>(this.API_URL + '/send-mail?email='+ `${email}` + '&list=' + `${listSubject}` + '&name=' + `${name}`, {responseType: 'text' as 'json'});
+  }
+
   public register(body: any) {
     return this.http.post<any>(this.APIREGISTER_URL + '/user/save', body, this.httpOption);
   }

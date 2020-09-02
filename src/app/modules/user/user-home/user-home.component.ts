@@ -14,9 +14,11 @@ export class UserHomeComponent implements OnInit {
   API_URL_IMG = environment.api_url + "/images/"
   statusType = '';
 
-  
-  constructor(private shaerdService: ShaerdService,
-    private router: Router) { }
+
+  constructor(
+    private shaerdService: ShaerdService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getDormList('0');
