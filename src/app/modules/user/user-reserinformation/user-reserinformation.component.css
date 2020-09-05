@@ -1,0 +1,34 @@
+.widthimage{
+    width:40%;
+}
+.text-cl {
+    color: #4290e9;
+}
+.bg-card {
+    background-color: #f0f7ff;
+    padding: 10px;
+}
+
+.text-mem {
+    color: #555555;
+}
+
+.text-ta {
+    color: #0071c2;
+    padding: 10px;
+}
+
+.bg-ta {
+    background-color: #ebf3ff;
+    padding: 10px;
+}
+
+.bg-dorm {
+    background-color: #e6ffe4;
+    padding: 10px;
+}
+
+.text-dorm {
+    color: #32A923;
+    padding: 10px;
+}

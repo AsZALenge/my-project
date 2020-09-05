@@ -18,8 +18,19 @@ export class ShaerdService {
     }),
   };
 
+  public searchDorm(dormName: any, priceStart: any, priceEnd: any, dormType: any){
+    return this.http.get<any>(this.API_URL + '/search-dorm?dormName='+ `${dormName}` 
+    + '&priceStart=' + `${priceStart}` 
+    + '&priceEnd=' + `${priceEnd}` 
+    + '&dormType=' + `${dormType}`);
+  }
+
   public saveMember(body: any) {
     return this.http.post<any>(this.API_URL + '/mem/save', body, this.httpOption);
+  }
+
+  public saveCon(body: any) {
+    return this.http.post<any>(this.API_URL + '/con/save', body, this.httpOption);
   }
 
   public getAllBank() {

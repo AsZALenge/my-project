@@ -14,6 +14,7 @@ import { DormRecheckpaymentComponent } from './dorm-recheckpayment/dorm-recheckp
 import { DormCreatedormitoryComponent } from './dorm-createdormitory/dorm-createdormitory.component';
 import { DormDormitoryComponent } from './dorm-dormitory/dorm-dormitory.component';
 import { DormManagedormComponent } from './dorm-managedorm/dorm-managedorm.component';
+import { DormCreateconvenientComponent } from './dorm-createconvenient/dorm-createconvenient.component';
 
 @NgModule({
   declarations: [DormHomeComponent,
@@ -27,7 +28,8 @@ import { DormManagedormComponent } from './dorm-managedorm/dorm-managedorm.compo
     DormRecheckpaymentComponent,
     DormCreatedormitoryComponent,
     DormDormitoryComponent,
-    DormManagedormComponent
+    DormManagedormComponent,
+    DormCreateconvenientComponent
   ],
 
   imports: [

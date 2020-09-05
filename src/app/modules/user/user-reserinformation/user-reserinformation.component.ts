@@ -9,9 +9,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./user-reserinformation.component.css']
 })
 export class UserReserinformationComponent implements OnInit {
-  memberList: Array<any>;
+  memData: any;
   username: string;
-  room_id: string;
+  dormData: any;
+  roomData: any;
 
   constructor(
     private shaerdService: ShaerdService,
@@ -22,19 +23,29 @@ export class UserReserinformationComponent implements OnInit {
     this.getPayList();
   }
   getPayList() {
+    debugger;
     const dorm = localStorage.getItem('dorm');
     console.log('patchValueForm : userId => ', dorm);
 
-    this.shaerdService.getMemById(dorm).subscribe((dataMem) => {
-      console.log('LOGGGG dataMem', dataMem);
-      this.memberList = dataMem;
+    this.shaerdService.getMemById(dorm).subscribe((data) => {
+      console.log('LOGGGG memData', data);
+      this.memData = data;
+
+      this.shaerdService.getRoomBy_id(dorm).subscribe((data) => {
+        console.log('patchValueForm : Response getRoomBy_id => ', data);
+        this.roomData = data;
+        this.shaerdService.getDormBy_id(data.dorm_id).subscribe((data) => {
+          console.log('LOGGGG  getDormBy_id', data);
+          this.dormData = data;
+        });
+      });
     });
   }
 
-  // onShow(data) {
-  //   this.shaerdService.getMemBy_id(data.mem_id).subscribe((res) => {
-  //     console.log('LOGGGG getMemBy_id', res);
-  //     this.router.navigate(['/user/showreser', data.mem_id]);
-  //   });
-  // }
+  onShow(data) {
+    this.shaerdService.getMemBy_id(data.mem_id).subscribe((res) => {
+      console.log('LOGGGG getMemBy_id', res);
+      this.router.navigate(['/user/showreser', data.mem_id]);
+    });
+  }
 }

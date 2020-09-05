@@ -40,13 +40,21 @@ export class DormDormitoryComponent implements OnInit {
 
   initFormGroup() {
     this.detaildormForm = this.fb.group({
-      dorm_id: [''],
-      id: [''],
+      id: ['', [Validators.required]],
+      dorm_id: ['', [Validators.required]],
       dorm_name: ['', [Validators.required]],
       dorm_address: ['', [Validators.required]],
       dorm_namebank: ['', [Validators.required]],
       dorm_numbank: ['', [Validators.required]],
       dorm_img: ['', [Validators.required]],
+      type_id: ['', [Validators.required]],
+      dorm_waterbill: ['', [Validators.required]],
+      dorm_electricbill: ['', [Validators.required]],
+      dorm_status: ['', [Validators.required]],
+      dorm_pricedate_start: ['', [Validators.required]],
+      dorm_pricedate_end: ['', [Validators.required]],
+      dorm_pricemonth_start: ['', [Validators.required]],
+      dorm_pricemonth_end: ['', [Validators.required]]
     });
   }
 
@@ -67,7 +75,15 @@ export class DormDormitoryComponent implements OnInit {
         dorm_address: res.dorm_address,
         dorm_namebank: res.dorm_namebank,
         dorm_numbank: res.dorm_numbank,
-        dorm_img: res.dorm_img
+        dorm_img: res.dorm_img,
+        type_id: res.type_id,
+        dorm_waterbill: res.dorm_waterbill,
+        dorm_electricbill: res.dorm_electricbill,
+        dorm_status: res.dorm_status,
+        dorm_pricedate_start: res.dorm_pricedate_start,
+        dorm_pricedate_end: res.dorm_pricedate_end,
+        dorm_pricemonth_start: res.dorm_pricemonth_start,
+        dorm_pricemonth_end: res.dorm_pricemonth_end
       });
       this.dorm_img = res.dorm_img;
 

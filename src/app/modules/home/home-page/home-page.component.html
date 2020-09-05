@@ -18,27 +18,29 @@
         <h4 class="text-center">ค้นหาหอพัก อพาร์ทเม้นท์ ทั้งรายเดือน รายวัน และอีกมากมาย</h4>
         <div class="col-xl-12">
             <div class="card mb-1 text-white bg search-box">
-                <form>
+                <form [formGroup]="formSearch" accept-charset="UTF-8" autocomplete="off">
                     <div class="form-row align-items-center">
                         <div class="col-sm-4 my-1">
-                            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                            <label class="sr-only" for="">Username</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">ชื่อหอพัก</div>
                                 </div>
-                                <input type="text" class="form-control" id="inlineFormInputGroupUsername"
-                                    placeholder="">
+                                <input type="text" class="form-control" id="" placeholder="" formControlName="dormName">
                             </div>
                         </div>
-                        <div class="col-sm-3 my-1">
-                            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                        <div class="col-sm-2 my-1">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text">ราคา</div>
+                                    <div class="input-group-text">ช่วงราคา</div>
                                 </div>
-                                <input type="text" class="form-control" id="inlineFormInputGroupUsername"
-                                    placeholder="">
+                                <input type="text" class="form-control" id="" placeholder="เริ่มต้น"
+                                    formControlName="priceStart">
                             </div>
+                        </div>
+                        <div class="col-sm-1 my-1">
+                            <input type="text" class="form-control" id="" placeholder="สิ้นสุด"
+                                formControlName="priceEnd">
                         </div>
                         <div class="col-sm-3 my-1">
                             <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
@@ -46,16 +48,24 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">สถานะ</div>
                                 </div>
-                                <select class="form-control">
+                                <select class="form-control" (change)="changeDormType($event.target.value)">
                                     <option selected>กรุณาเลือกสถานะ</option>
-                                    <option>รายเดือน</option>
-                                    <option>รายวัน</option>
+                                    <option value="MONTH">รายเดือน</option>
+                                    <option value="DAY">รายวัน</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-auto my-1">
-                            <button type="submit" class="btn btn-light">ค้นหา</button>
+                            <button type="submit" class="btn btn-info" (click)="onSearch()">ค้นหา</button>&nbsp;
+                            <button type="submit" class="btn btn-light" (click)="resetForm()"><svg width="1em"
+                                    height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                                    <path fill-rule="evenodd"
+                                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                                </svg></button>
                         </div>
                     </div>
                 </form>

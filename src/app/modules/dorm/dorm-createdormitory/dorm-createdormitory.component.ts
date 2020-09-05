@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class DormCreatedormitoryComponent implements OnInit {
   createdormForm: FormGroup;
   fileNameShow: any;
+  dorm_id: any;
 
   constructor(
     private fb: FormBuilder,
@@ -27,11 +28,20 @@ export class DormCreatedormitoryComponent implements OnInit {
 
     this.createdormForm = this.fb.group({
       id: [userId, [Validators.required]],
+      dorm_id: ['0', [Validators.required]],
       dorm_name: ['', [Validators.required]],
       dorm_address: ['', [Validators.required]],
       dorm_namebank: ['', [Validators.required]],
       dorm_numbank: ['', [Validators.required]],
       dorm_img: ['', [Validators.required]],
+      type_id: ['', [Validators.required]],
+      dorm_waterbill: ['', [Validators.required]],
+      dorm_electricbill: ['', [Validators.required]],
+      dorm_status: ['', [Validators.required]],
+      dorm_pricedate_start: ['', [Validators.required]],
+      dorm_pricedate_end: ['', [Validators.required]],
+      dorm_pricemonth_start: ['', [Validators.required]],
+      dorm_pricemonth_end: ['', [Validators.required]]
     });
   }
   // save
@@ -43,7 +53,7 @@ export class DormCreatedormitoryComponent implements OnInit {
     } else { // case success
       console.log(this.createdormForm.value);
       console.log('LOG DATA FN() >>>submitForm<<<::', this.createdormForm.value);
-      this.router.navigate(['/dorm/detailDorm']);
+      this.router.navigate(['/dorm/createCon',this.dorm_id]);
       // register
       this.shaerdService.createdorm(this.createdormForm.value).subscribe(
         (error) => console.log(error)

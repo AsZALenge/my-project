@@ -12,6 +12,7 @@ import { DormRecheckpaymentComponent } from './dorm-recheckpayment/dorm-recheckp
 import { DormCreatedormitoryComponent } from './dorm-createdormitory/dorm-createdormitory.component';
 import { DormDormitoryComponent } from './dorm-dormitory/dorm-dormitory.component';
 import { DormManagedormComponent } from './dorm-managedorm/dorm-managedorm.component';
+import { DormCreateconvenientComponent } from './dorm-createconvenient/dorm-createconvenient.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     { path: 'reCheckPayment/:pay_id', component: DormRecheckpaymentComponent },
     { path: 'profile', component: DormProfileComponent },
     { path: 'updateProfile', component: DormUpdateprofileComponent },
+    { path: 'createCon', component: DormCreateconvenientComponent },
 
 ];
 

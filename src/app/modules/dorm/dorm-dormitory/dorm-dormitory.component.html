@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="card" class="col-md-9 offset-md-1" style="background-color: #f2f8ff;">
-        <div class="col-md-10 offset-md-1"><br>
+    <div class="card" class="col-md-10 offset-md-1">
+        <div class="card col-md-10 offset-md-1"><br>
             <h4>
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
@@ -11,48 +11,116 @@
                 หอพักของท่าน</h4><br>
             <form [formGroup]="detaildormForm" accept-charset="UTF-8" autocomplete="off">
                 <fieldset>
-                    <div class="form-row">
-                        <div class="form-group col-md-12 offset-md-3">
-                            <div class="card" style="width: 18rem;">
-                                <img [src]=getUrlImg() class="card-img-top" alt="...">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="form-row">
+                            <div class="form-group col-md-12 offset-md-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img [src]=getUrlImg() class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputPassword4">
+                                    <h6>ชื่อหอพัก</h6>
+                                </label>
+                                <input class="form-control" placeholder="" formControlName="dorm_name" type="text"
+                                    required disabled/>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputPassword4">
+                                    <h6>ที่อยู่</h6>
+                                </label>
+                                <textarea class="form-control" placeholder="" formControlName="dorm_address" type="text"
+                                    required disabled></textarea>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>ชื่อธนาคาร</h6>
+                                </label>
+                                <input class="form-control" placeholder="" formControlName="dorm_namebank" type="text"
+                                    required disabled/>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>เลขบัญชีธนาคาร</h6>
+                                </label>
+                                <input class="form-control" placeholder="" formControlName="dorm_numbank" type="text"
+                                    required disabled/>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputPassword4">
+                                    <h6>ประเภท</h6>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect2" formControlName="type_id" disabled>
+                                    <option value="1">หอพัก</option>
+                                    <option value="2">อพาร์ทเมนท์</option>
+                                </select>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>ค่าน้ำ</h6>
+                                </label>
+                                <input class="form-control" placeholder="" formControlName="dorm_waterbill" type="text"
+                                    required disabled/>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>ค่าไฟ</h6>
+                                </label>
+                                <input class="form-control" placeholder="" formControlName="dorm_electricbill"
+                                    type="text" required disabled/>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputPassword4">
+                                    <h6>สถานะ</h6>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect2"
+                                    formControlName="dorm_status"disabled>
+                                    <option>รายเดือน</option>
+                                    <option>รายวัน</option>
+                                    <option>รายเดือน-รายวัน</option>
+                                </select>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>ค่าห้อง(รายวัน)</h6>
+                                </label>
+                                <input class="form-control" placeholder="" formControlName="dorm_pricedate_start"
+                                    type="number" min="0" required disabled/>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>ค่าห้อง(รายวัน)</h6>
+                                </label>
+                                <input class="form-control" placeholder="" formControlName="dorm_pricedate_end"
+                                    type="number" min="0" required disabled/>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>ค่าห้อง(รายเดือน)</h6>
+                                </label>
+                                <input class="form-control" placeholder="" formControlName="dorm_pricemonth_start"
+                                    type="number" min="0" required disabled/>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>ค่าห้อง(รายเดือน)</h6>
+                                </label>
+                                <input class="form-control" placeholder="" formControlName="dorm_pricemonth_end"
+                                    type="number" min="0" required disabled/>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">
-                                <h6>ชื่อหอพัก</h6>
-                            </label>
-                            <input class="form-control" placeholder="" formControlName="dorm_name" type="text" required
-                                disabled />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">
-                                <h6>ที่อยู่</h6>
-                            </label>
-                            <input class="form-control" placeholder="" formControlName="dorm_address" type="text"
-                                required disabled />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">
-                                <h6>ชื่อธนาคาร</h6>
-                            </label>
-                            <input class="form-control" placeholder="" formControlName="dorm_namebank" type="text"
-                                required disabled />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">
-                                <h6>เลขบัญชีธนาคาร</h6>
-                            </label>
-                            <input class="form-control" placeholder="" formControlName="dorm_numbank" type="text"
-                                required disabled />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <!-- <div class="form-group col-md-12">
-                            <label for="inputPassword4">
-                                <h6>รูปหอพัก</h6>
-                            </label>
-                            <input class="form-control" placeholder="" formControlName="dorm_img" type="text" required disabled/>
-                        </div> -->
                     </div><br>
 
                     <div class="text-center">
@@ -60,11 +128,11 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;แก้ไข&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="btn btn-lg btn-danger" routerLink="/dorm/profile">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ยกเลิก&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ย้อนกลับ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </button>
                     </div>
                 </fieldset><br>
             </form>
-        </div>
+        </div><br>
     </div>
 </div>

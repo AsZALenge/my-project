@@ -66,10 +66,10 @@
     }
 </style>
 <div class="container">
-    <div class="card" style="background-color: #E1ECF9;">
-        <div class="col-md-10 offset-md-1">
-            <form [formGroup]="addRoom" accept-charset="UTF-8" autocomplete="off">
-                <fieldset><br>
+    <div class="card col-md-10 offset-md-1">
+        <form [formGroup]="addRoom" accept-charset="UTF-8" autocomplete="off">
+            <fieldset><br>
+                <div class="col-md-10 offset-md-1">
                     <h4 class="text-center">
                         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-shop" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
@@ -504,14 +504,10 @@
                                 ยกเลิก
                             </button>
                         </div>
-                    </div><br>
-
-                    <div *ngIf="loading" class="spinner-grow text-primary" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div><br>
-                </fieldset>
-            </form>
-        </div>
+                    </div>
+                </div><br>
+            </fieldset>
+        </form>
     </div><br>
 </div>
 
