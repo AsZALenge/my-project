@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DormHomeComponent implements OnInit {
   roomList: any;
+  dormData: any;
   detaildormForm: FormGroup;
   API_URL_IMG = environment.api_url + "/images/"
 
@@ -31,13 +32,21 @@ export class DormHomeComponent implements OnInit {
     const dorm = localStorage.getItem('dorm');
     console.log('patchValueForm : userId => ', dorm);
 
-    this.shaerdService.getDormByuserId(dorm).subscribe((dataUser) => {
-      console.log('LOGGGG dataUser', dataUser);
+    this.shaerdService.getDormByuserId(dorm).subscribe((dataDorm) => {
+      console.log('LOGGGG dataUser', dataDorm);
+      this.dormData = dataDorm;
 
-      this.shaerdService.getRoomBydormId(dataUser.dorm_id).subscribe((dataDorm) => {
+      this.shaerdService.getRoomBydormId(dataDorm.dorm_id).subscribe((dataDorm) => {
         console.log('LOGGGG dataDorm', dataDorm);
         this.roomList = dataDorm;
       });
     });
   };
+  
+  onEdit(data) {
+    // this.shaerdService.getRoomBy_id(data.room_id).subscribe((res) => {
+      console.log('LOGGGG onEdit', data);
+      this.router.navigate(['/dorm/updateRoom',data.room_id]);
+    // });
+  }
 }

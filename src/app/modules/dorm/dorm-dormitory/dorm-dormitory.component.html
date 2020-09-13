@@ -1,4 +1,8 @@
 <div class="container">
+    <!-- <a href="#" class="float " routerLink="/dorm/createCon">
+        <p class="my-float">เพิ่มสิ่งอำนวยความสะดวก</p>
+    </a> -->
+
     <div class="card" class="col-md-10 offset-md-1">
         <div class="card col-md-10 offset-md-1"><br>
             <h4>
@@ -23,7 +27,7 @@
                                     <h6>ชื่อหอพัก</h6>
                                 </label>
                                 <input class="form-control" placeholder="" formControlName="dorm_name" type="text"
-                                    required disabled/>
+                                    required disabled />
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                             <div class="form-group col-md-12">
@@ -39,7 +43,7 @@
                                     <h6>ชื่อธนาคาร</h6>
                                 </label>
                                 <input class="form-control" placeholder="" formControlName="dorm_namebank" type="text"
-                                    required disabled/>
+                                    required disabled />
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                             <div class="form-group col-md-6">
@@ -47,14 +51,15 @@
                                     <h6>เลขบัญชีธนาคาร</h6>
                                 </label>
                                 <input class="form-control" placeholder="" formControlName="dorm_numbank" type="text"
-                                    required disabled/>
+                                    required disabled />
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputPassword4">
                                     <h6>ประเภท</h6>
                                 </label>
-                                <select class="form-control" id="exampleFormControlSelect2" formControlName="type_id" disabled>
+                                <select class="form-control" id="exampleFormControlSelect2" formControlName="type_id"
+                                    disabled>
                                     <option value="1">หอพัก</option>
                                     <option value="2">อพาร์ทเมนท์</option>
                                 </select>
@@ -65,7 +70,7 @@
                                     <h6>ค่าน้ำ</h6>
                                 </label>
                                 <input class="form-control" placeholder="" formControlName="dorm_waterbill" type="text"
-                                    required disabled/>
+                                    required disabled />
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                             <div class="form-group col-md-6">
@@ -73,51 +78,47 @@
                                     <h6>ค่าไฟ</h6>
                                 </label>
                                 <input class="form-control" placeholder="" formControlName="dorm_electricbill"
-                                    type="text" required disabled/>
+                                    type="text" required disabled />
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputPassword4">
                                     <h6>สถานะ</h6>
                                 </label>
-                                <select class="form-control" id="exampleFormControlSelect2"
-                                    formControlName="dorm_status"disabled>
-                                    <option>รายเดือน</option>
-                                    <option>รายวัน</option>
-                                    <option>รายเดือน-รายวัน</option>
-                                </select>
+                                <input class="form-control" id="exampleFormControlSelect2" formControlName="dorm_status"
+                                    value="" disabled>
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">
-                                    <h6>ค่าห้อง(รายวัน)</h6>
+                                    <h6>ค่าห้องรายวัน(เริ่มต้น)</h6>
                                 </label>
                                 <input class="form-control" placeholder="" formControlName="dorm_pricedate_start"
-                                    type="number" min="0" required disabled/>
+                                    type="number" min="0" required disabled />
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">
-                                    <h6>ค่าห้อง(รายวัน)</h6>
+                                    <h6>ค่าห้องรายวัน(สิ้นสุด)</h6>
                                 </label>
                                 <input class="form-control" placeholder="" formControlName="dorm_pricedate_end"
-                                    type="number" min="0" required disabled/>
+                                    type="number" min="0" required disabled />
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">
-                                    <h6>ค่าห้อง(รายเดือน)</h6>
+                                    <h6>ค่าห้องรายเดือน(เริ่มต้น)</h6>
                                 </label>
                                 <input class="form-control" placeholder="" formControlName="dorm_pricemonth_start"
-                                    type="number" min="0" required disabled/>
+                                    type="number" min="0" required disabled />
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">
-                                    <h6>ค่าห้อง(รายเดือน)</h6>
+                                    <h6>ค่าห้องรายเดือน(สิ้นสุด)</h6>
                                 </label>
                                 <input class="form-control" placeholder="" formControlName="dorm_pricemonth_end"
-                                    type="number" min="0" required disabled/>
+                                    type="number" min="0" required disabled />
                                 <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
                             </div>
                         </div>
@@ -127,7 +128,7 @@
                         <button class="btn btn-lg btn-success" (click)="submitForm()">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;แก้ไข&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-lg btn-danger" routerLink="/dorm/profile">
+                        <button class="btn btn-lg btn-danger" routerLink="/dorm">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ย้อนกลับ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </button>
                     </div>

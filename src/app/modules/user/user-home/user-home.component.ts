@@ -28,8 +28,8 @@ export class UserHomeComponent implements OnInit {
 
     this.formSearch = this.fb.group({
       dormName: ['', [Validators.required, Validators.minLength(4)]],
-      priceStart: [0, [Validators.required]],
-      priceEnd: [0, [Validators.required]],
+      priceStart: ['', [Validators.required]],
+      priceEnd: ['', [Validators.required]],
       dormType: ['', [Validators.required]],
     });
   }
@@ -56,7 +56,7 @@ export class UserHomeComponent implements OnInit {
   onShow(data) {
     this.shaerdService.getDormBy_id(data.dorm_id).subscribe((res) => {
       console.log('LOGGGG LISTSHOP', res);
-      this.router.navigate(['/home/showRoom', data.dorm_id]);
+      this.router.navigate(['/user/showRoom', data.dorm_id]);
     });
   }
 

@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class DormSelectroomupdateComponent implements OnInit {
   roomList: Array<any>;
   API_URL_IMG = environment.api_url + "/images/"
-  
+
   constructor(
     private shaerdService: ShaerdService,
     private router: Router
@@ -21,7 +21,7 @@ export class DormSelectroomupdateComponent implements OnInit {
   ngOnInit(): void {
     this.getAllroomList();
   }
-  
+
   getAllroomList() {
     const dorm = localStorage.getItem('dorm');
     console.log('patchValueForm : userId => ', dorm);
@@ -38,13 +38,15 @@ export class DormSelectroomupdateComponent implements OnInit {
 
   onEdit(data) {
     // this.shaerdService.getRoomBy_id(data.room_id).subscribe((res) => {
-      console.log('LOGGGG onEdit', data);
-      this.router.navigate(['/dorm/updateRoom',data.room_id]);
+    console.log('LOGGGG onEdit', data);
+    this.router.navigate(['/dorm/updateRoom', data.room_id]);
     // });
   }
+
+
   onDelete(data) {
-    this.shaerdService.deleteRoomByRoom_id(data.room_id).subscribe((res) => { 
-    window.location.reload();
+    this.shaerdService.deleteRoomByRoom_id(data.room_id).subscribe((res) => {
+      window.location.reload();
       console.log('LOGGGG onDelete', res);
     });
   }

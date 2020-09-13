@@ -34,3 +34,22 @@
 .my-homeshop{
 	margin-top:22px;
 }
+
+.con{
+	z-index: 3;
+	position:fixed;
+	width:80px;
+	height:80px;
+	bottom:60px;
+	margin-bottom: 15em;
+	right:39px;
+	background-color:#0084ff;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-con{
+	margin-top:12px;
+}

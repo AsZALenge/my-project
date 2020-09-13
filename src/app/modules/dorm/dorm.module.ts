@@ -15,6 +15,8 @@ import { DormCreatedormitoryComponent } from './dorm-createdormitory/dorm-create
 import { DormDormitoryComponent } from './dorm-dormitory/dorm-dormitory.component';
 import { DormManagedormComponent } from './dorm-managedorm/dorm-managedorm.component';
 import { DormCreateconvenientComponent } from './dorm-createconvenient/dorm-createconvenient.component';
+import { DormShowconvenComponent } from './dorm-showconven/dorm-showconven.component';
+import { DormUpdateconvenComponent } from './dorm-updateconven/dorm-updateconven.component';
 
 @NgModule({
   declarations: [DormHomeComponent,
@@ -29,7 +31,9 @@ import { DormCreateconvenientComponent } from './dorm-createconvenient/dorm-crea
     DormCreatedormitoryComponent,
     DormDormitoryComponent,
     DormManagedormComponent,
-    DormCreateconvenientComponent
+    DormCreateconvenientComponent,
+    DormShowconvenComponent,
+    DormUpdateconvenComponent,
   ],
 
   imports: [

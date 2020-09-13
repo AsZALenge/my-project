@@ -34,10 +34,10 @@ export class DormCheckpaymentComponent implements OnInit {
         console.log('LOGGGG dataMem', dataMem);
         this.payList = dataMem;
 
-        this.shaerdService.getPayBydormId(dataDorm.dorm_id).subscribe((dataPay) => {
-          console.log('LOGGGG dataPay', dataPay);
-          this.payList = dataPay;
-        });
+        // this.shaerdService.getPayBydormId(dataDorm.dorm_id).subscribe((dataPay) => {
+        //   console.log('LOGGGG dataPay', dataPay);
+        //   this.payList = dataPay;
+        // });
       });
     });
   }
@@ -49,10 +49,9 @@ export class DormCheckpaymentComponent implements OnInit {
   // };
 
   onShow(data) {
-    this.shaerdService.getCheckPaymentBy_id(data.pay_id).subscribe((res) => {
-      console.log('LOGGGG getCheckPaymentBy_id', res);
-      this.product = res;
-      this.router.navigate(['/dorm/reCheckPayment', data.pay_id]);
+    this.shaerdService.getMemBy_id(data.mem_id).subscribe((res) => {
+      console.log('LOGGGG getMemBy_id', res);
+      this.router.navigate(['/dorm/reCheckPayment', data.mem_id]);
     });
   }
 }

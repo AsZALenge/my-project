@@ -1,24 +1,24 @@
 <div class="container">
-    <table class="table table-hover">
-        <thead class="thead" style="background-color: #E1ECF9;">
+    <h4 class="text-center">ข้อมูลการจองห้องพัก</h4><br>
+    <table class="table table-bordered">
+        <thead class="text-ta bg-ta">
             <tr>
-                <th scope="col">รูปภาพใบเสร็จ</th>
-                <th scope="col">จำนวนเงิน</th>
-                <th scope="col">วันที่ชำระเงิน</th>
-                <th scope="col">สถานะ</th>
-                <th scope="col"></th>
+                <th scope="col">ชื่อ-สกุล</th>
+                <th scope="col">วันที่จอง</th>
+                <th scope="col">วันที่เข้าพัก</th>
+                <th scope="col">ค่ามัดจำ</th>
+                <th scope="col">สถานะการชำระเงิน</th>
+                <th scope="col" class="text-center">ตรวจสอบ</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of payList">
-                <td>
-                    <div class="card" style="width: 12rem;"><img src="{{API_URL_IMG + data.pay_pic}}"
-                            class="card-img-top"></div>
-                </td>
-                <td>{{data.pay_price}}</td>
-                <td>{{data.pay_date}}</td>
-                <td>{{data.pay_status}}</td>
-                <td><button type="button" class="btn btn-outline-warning" (click)="onShow(data)">ตรวจสอบ</button></td>
+                <td>{{data.first_name}} {{data.last_name}}</td>
+                <td>{{data.mem_reserdate}}</td>
+                <td>{{data.date_of_stay}}</td>
+                <td>{{data.deposit}}&nbsp;&nbsp;บาท</td>
+                <td>{{data.deposit_status}}</td>
+                <td class="text-center"><button type="button" class="btn btn-warning" (click)="onShow(data)">ดูข้อมูล</button></td>
             </tr>
         </tbody>
     </table>

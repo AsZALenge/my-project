@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShaerdService } from 'src/app/shared/service/shaerd.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,14 +9,15 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./user-reserinformation.component.css']
 })
 export class UserReserinformationComponent implements OnInit {
-  memData: any;
+  // memData: Array<any>;
+  memData : any;
   username: string;
-  dormData: any;
-  roomData: any;
 
   constructor(
     private shaerdService: ShaerdService,
-    private router: Router
+    private router: Router,
+    private activatedroute: ActivatedRoute,
+
   ) { }
 
   ngOnInit(): void {
@@ -24,21 +25,13 @@ export class UserReserinformationComponent implements OnInit {
   }
   getPayList() {
     debugger;
-    const dorm = localStorage.getItem('dorm');
+     const dorm = localStorage.getItem('dorm');
     console.log('patchValueForm : userId => ', dorm);
 
-    this.shaerdService.getMemById(dorm).subscribe((data) => {
-      console.log('LOGGGG memData', data);
+     this.shaerdService.getMemById(dorm).subscribe((data) => {
+      console.log('patchValueForm : Response getMemById => ', data);
       this.memData = data;
 
-      this.shaerdService.getRoomBy_id(dorm).subscribe((data) => {
-        console.log('patchValueForm : Response getRoomBy_id => ', data);
-        this.roomData = data;
-        this.shaerdService.getDormBy_id(data.dorm_id).subscribe((data) => {
-          console.log('LOGGGG  getDormBy_id', data);
-          this.dormData = data;
-        });
-      });
     });
   }
 

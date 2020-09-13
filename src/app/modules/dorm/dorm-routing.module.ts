@@ -13,6 +13,8 @@ import { DormCreatedormitoryComponent } from './dorm-createdormitory/dorm-create
 import { DormDormitoryComponent } from './dorm-dormitory/dorm-dormitory.component';
 import { DormManagedormComponent } from './dorm-managedorm/dorm-managedorm.component';
 import { DormCreateconvenientComponent } from './dorm-createconvenient/dorm-createconvenient.component';
+import { DormShowconvenComponent } from './dorm-showconven/dorm-showconven.component';
+import { DormUpdateconvenComponent } from './dorm-updateconven/dorm-updateconven.component';
 
 
 const routes: Routes = [
@@ -25,10 +27,12 @@ const routes: Routes = [
     { path: 'selectRoomUpdate', component: DormSelectroomupdateComponent },
     { path: 'addRoom', component: DormAddroomComponent },
     { path: 'checkPayment', component: DormCheckpaymentComponent },
-    { path: 'reCheckPayment/:pay_id', component: DormRecheckpaymentComponent },
+    { path: 'reCheckPayment/:mem_id', component: DormRecheckpaymentComponent },
     { path: 'profile', component: DormProfileComponent },
     { path: 'updateProfile', component: DormUpdateprofileComponent },
     { path: 'createCon', component: DormCreateconvenientComponent },
+    { path: 'showCon', component: DormShowconvenComponent },
+    { path: 'updateCon', component: DormUpdateconvenComponent },
 
 ];
 

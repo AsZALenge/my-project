@@ -11,7 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DormCreateconvenientComponent implements OnInit {
   createCon: FormGroup;
   fileNameShow: any;
-  dorm_id;
+  dorm;
+  dorm_id: string;
 
   constructor(
     private fb: FormBuilder,
@@ -30,13 +31,13 @@ export class DormCreateconvenientComponent implements OnInit {
     this.shaerdService.getDormByuserId(userId).subscribe((data) => {
       this.activatedroute.snapshot.paramMap.get(this.dorm_id);
       console.log('LOGGGG getDormByuserId', data);
-      this.dorm_id = data
+      this.dorm = data
     });
     console.log('USER ID ::::: ' + userId);
 
     this.createCon = this.fb.group({
       con_id: [''],
-      dorm_id: [this.dorm_id],
+      dorm_id: [''],
       con_park: ['', [Validators.required]],
       con_wifi: ['', [Validators.required]],
       con_washing: ['', [Validators.required]],
@@ -65,7 +66,7 @@ export class DormCreateconvenientComponent implements OnInit {
   submitForm() {
     debugger;
     this.createCon.patchValue({
-      dorm_id: this.dorm_id,
+      dorm_id: this.dorm.dorm_id,
       con_id: '0',
     })
 
@@ -76,11 +77,12 @@ export class DormCreateconvenientComponent implements OnInit {
     } else { // case success
       console.log(this.createCon.value);
       console.log('LOG DATA FN() >>>submitForm<<<::', this.createCon.value);
-      this.router.navigate(['/dorm/mange']);
+      this.router.navigate(['/dorm/manage']);
       // register
       this.shaerdService.saveCon(this.createCon.value).subscribe(
         (error) => console.log(error)
       );
+      alert('ท่านได้สร้างหอพัก และเพิ่มสิ่งอำนวยความสะดวกเรียบร้อยแล้ว')
     }
   }
 

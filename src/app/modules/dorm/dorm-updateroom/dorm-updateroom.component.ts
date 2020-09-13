@@ -31,21 +31,18 @@ export class DormUpdateroomComponent implements OnInit {
 
   initFormGroup() {
     this.editRoom = this.fb.group({
+      id: [''],
+      dorm_id: [''],
+      room_id: [''],
       room_num: ['', [Validators.required]],
       room_img: ['', [Validators.required]],
       room_price: ['', [Validators.required]],
-      room_park: ['', [Validators.required]],
-      room_wifi: ['', [Validators.required]],
-      room_refri: ['', [Validators.required]],
-      room_macwas: ['', [Validators.required]],
-      room_pet: ['', [Validators.required]],
-      room_heater: ['', [Validators.required]],
+      room_refrigerator: ['', [Validators.required]],
+      room_waterheater: ['', [Validators.required]],
       room_air: ['', [Validators.required]],
       room_tv: ['', [Validators.required]],
       room_fan: ['', [Validators.required]],
-      room_status: ['', [Validators.required]],
-      dorm_id: ['', [Validators.required]],
-      room_id: ['', [Validators.required]]
+      room_status: ['', [Validators.required]]
     });
   }
 
@@ -59,21 +56,18 @@ export class DormUpdateroomComponent implements OnInit {
 
       // patch value to form
       this.editRoom.patchValue({
+        id: res.id,
+        dorm_id: res.dorm_id,
+        room_id: res.room_id,
         room_num: res.room_num,
         room_img: res.room_img,
         room_price: res.room_price,
-        room_park: res.room_park,
-        room_wifi: res.room_wifi,
-        room_refri: res.room_refri,
-        room_macwas: res.room_macwas,
-        room_pet: res.room_pet,
-        room_heater: res.room_heater,
+        room_refrigerator: res.room_refrigerator,
+        room_waterheater: res.room_waterheater,
         room_air: res.room_air,
         room_tv: res.room_tv,
         room_fan: res.room_fan,
         room_status: res.room_status,
-        room_id: res.room_id,
-        dorm_id: res.dorm_id
       });
       console.log('editRoom => ', this.editRoom.value);
     });

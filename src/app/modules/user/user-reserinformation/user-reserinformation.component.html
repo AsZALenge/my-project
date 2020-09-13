@@ -3,22 +3,20 @@
     <table class="table table-bordered">
         <thead class="text-ta bg-ta">
             <tr>
-                <th scope="col">ห้อง</th>
-                <th scope="col">ค่ามัดจำ</th>
-                <th scope="col">จำนวนผู้ที่พัก</th>
                 <th scope="col">วันที่จอง</th>
                 <th scope="col">วันที่เข้าพัก</th>
+                <th scope="col">ค่ามัดจำ</th>
+                <th scope="col">สถานะการชำระเงิน</th>
                 <th scope="col" class="text-center">ตรวจสอบ</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">{{roomData.room_num}}</th>
-                <td>{{dormData.dorm_name}} บาท</td>
-                <td>{{memData.mem_guest}} คน</td>
-                <td>{{memData.mem_reserdate}}</td>
-                <td>{{memData.date_of_stay}}</td>
-                <!-- <td class="text-center"><button type="button" class="btn btn-warning" (click)="onShow(data)">ดูข้อมูล</button></td> -->
+            <tr *ngFor="let data of memData">
+                <td>{{data.mem_reserdate}}</td>
+                <td>{{data.date_of_stay}}</td>
+                <td>{{data.deposit}}&nbsp;&nbsp;บาท</td>
+                <td>{{data.deposit_status}}</td>
+                <td class="text-center"><button type="button" class="btn btn-warning" (click)="onShow(data)">ดูข้อมูล</button></td>
             </tr>
         </tbody>
     </table>

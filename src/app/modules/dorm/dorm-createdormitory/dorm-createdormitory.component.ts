@@ -53,12 +53,13 @@ export class DormCreatedormitoryComponent implements OnInit {
     } else { // case success
       console.log(this.createdormForm.value);
       console.log('LOG DATA FN() >>>submitForm<<<::', this.createdormForm.value);
-      this.router.navigate(['/dorm/createCon',this.dorm_id]);
+      this.router.navigate(['/dorm/createCon']);
       // register
       this.shaerdService.createdorm(this.createdormForm.value).subscribe(
         (error) => console.log(error)
       );
     }
+
   }
 
   uploadImage(event) {

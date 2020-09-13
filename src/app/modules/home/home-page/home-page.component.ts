@@ -27,8 +27,8 @@ export class HomePageComponent implements OnInit {
 
     this.formSearch = this.fb.group({
       dormName: ['', [Validators.required, Validators.minLength(4)]],
-      priceStart: [0, [Validators.required]],
-      priceEnd: [0, [Validators.required]],
+      priceStart: ['', [Validators.required]],
+      priceEnd: ['', [Validators.required]],
       dormType: ['', [Validators.required]],
     });
 

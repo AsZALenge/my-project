@@ -100,7 +100,7 @@ export class UserSelectroomComponent implements OnInit {
   }
   get form() { return this.userShow.controls; }
 
-  async RoomMem() {debugger
+  async RoomMem() {
 
     let roomId = this.activatedroute.snapshot.paramMap.get("room_id");
     console.log('patchValueForm : room_id => ', roomId);
@@ -123,7 +123,7 @@ export class UserSelectroomComponent implements OnInit {
     debugger;
     this.userShow.patchValue({
       dorm_id: this.data.dorm_id,
-      deposit_status: 'Y',
+      deposit_status: 'ชำระแล้ว',
       mem_ref: this.datePipe.transform(new Date(), 'dd-MM-yyyy HH:mm:ss'),
       room_id: this.data.room_id,
       deposit: (30 / 100) * this.data.room_price,

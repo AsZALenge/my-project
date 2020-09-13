@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShaerdService } from 'src/app/shared/service/shaerd.service';
 import { Router } from '@angular/router';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-dorm-addroom',
@@ -45,15 +46,12 @@ export class DormAddroomComponent implements OnInit {
     this.addRoom = this.fb.group({
       id: [userId],
       dorm_id: [''],
+      room_id: [''],
       room_num: ['', [Validators.required]],
       room_img: ['', [Validators.required]],
       room_price: ['', [Validators.required]],
-      room_park: ['', [Validators.required]],
-      room_wifi: ['', [Validators.required]],
-      room_refri: ['', [Validators.required]],
-      room_macwas: ['', [Validators.required]],
-      room_pet: ['', [Validators.required]],
-      room_heater: ['', [Validators.required]],
+      room_refrigerator: ['', [Validators.required]],
+      room_waterheater: ['', [Validators.required]],
       room_air: ['', [Validators.required]],
       room_tv: ['', [Validators.required]],
       room_fan: ['', [Validators.required]],
@@ -76,6 +74,8 @@ export class DormAddroomComponent implements OnInit {
     } {
       this.router.navigate(['/dorm/mange']);
     }
+
+    alert('สร้างห้องเรียบร้อยแล้ว')
   }
 
   uploadImage(event) {

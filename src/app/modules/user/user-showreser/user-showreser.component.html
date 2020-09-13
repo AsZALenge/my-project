@@ -1,31 +1,55 @@
-<div class="aUyidf">
-    <div class="container">
-        <div class="col-md-5 offset-md-4">
-            <div class="card text">
-                <div class="card-body">
-                    <h4 class="text-center">ข้อมูลการจอง</h4>
-                    <form [formGroup]="showreser">
-                        <fieldset>
-                            <div class="form-group">
-                                <label class="form-control-plaintext" type="text">วันที่จองห้องพัก</label>
-                                <input class="form-control" placeholder="" type="text" required
-                                    formControlName="mem_reserdate" disabled/>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-plaintext" type="text">จำนวนผู้ที่พัก</label>
-                                <input class="form-control" placeholder="" type="text" required
-                                    formControlName="mem_add" disabled/>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-plaintext" type="text">ราคาห้อง</label>
-                                <input class="form-control" placeholder="" type="text" required
-                                    formControlName="room_price" disabled/>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn btn-outline-success" (click)="submitForm()">ยืนยัน</button>
-                            </div>
-                        </fieldset>
-                    </form>
+<div class="container">
+    <div class="row col-xl-12 offset-xl-1">
+        <div class="col-xl-9">
+            <h5 class="text-center"><b>รายละเอียดการชำระเงิน</b></h5>
+            <div class="card mb-1" style="max-width: 1000px;">
+                <div class="row no-gutters">
+                    <div class="card-body" style="max-width: 300px;"><br>
+                        <h6><b>ใบเสร็จการชำระเงิน</b></h6>
+                        <img src="{{API_URL_IMG + memData.mem_img}}" class="widthimage">
+                    </div>
+                    <div class="form-row col-md-7">
+                        <div class="form-group col-md-6 textcl"><br><br><br>
+                            <p class="card-text">
+                                <b>ชื่อ-สกุล</b></p>
+                            <p class="card-text">
+                                <b>อีเมล์</b></p>
+                            <p class="card-text">
+                                <b>เบอร์โทรศัพท์</b></p>
+                            <p class="card-text">
+                                <b>วันที่จอง</b></p>
+                            <p class="card-text">
+                                <b>วันที่เข้าพัก</b></p>
+                            <p class="card-text">
+                                <b>จำนวนผู้ที่พัก</b></p>
+                            <p class="card-text">
+                                <b>ค่ามัดจำ</b></p>
+                            <p class="card-text">
+                                <b>สถานะการชำระเงิน</b></p>
+                        </div>
+                        <div class="form-group col-md-6 text-right"><br><br><br>
+                            <p class="card-text">
+                                <b>{{memData.first_name}}&nbsp;{{memData.last_name}}</b></p>
+                            <p class="card-text">
+                                {{memData.email}}</p>
+                            <p class="card-text">
+                                {{memData.tel}}</p>
+                            <p class="card-text">
+                                {{memData.mem_reserdate}}</p>
+                            <p class="card-text">
+                                <b>{{memData.date_of_stay}}</b></p>
+                            <p class="card-text">
+                                <b>{{memData.mem_guest}}</b> คน</p>
+                            <p class="card-text">
+                                <b>{{memData.deposit}}</b> บาท</p>
+                            <p class="card-text sus">
+                                <b>{{memData.deposit_status}}</b></p>
+                        </div>
+                        <div class="offset-xl-5">
+                            <button class="btn btn-success"
+                                (click)="submitForm()">&nbsp;&nbsp;&nbsp;ย้อนกลับ&nbsp;&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

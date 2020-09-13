@@ -1,0 +1,110 @@
+<div class="container">
+    <div class="card" class="col-md-10 offset-md-1">
+        <div class="card col-md-10 offset-md-1"><br>
+            <h5>&nbsp;&nbsp;&nbsp;
+                <svg width="25" height="25" viewBox="0 0 16 16" class="bi bi-bookmark-plus" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                    <path fill-rule="evenodd"
+                        d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z" />
+                </svg>&nbsp;
+                สิ่งอำนวยความสะดวกภายในหอของท่าน</h5><br>
+            <form class="was-validated" [formGroup]="showCon" accept-charset="UTF-8" autocomplete="off">
+                <fieldset>
+                    <div class="col-md-10 offset-md-1">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputPassword4">
+                                    <h6>ที่จอดรถ</h6>
+                                </label>
+                                <textarea class="form-control" placeholder="" formControlName="con_park" type="text"
+                                    required></textarea>
+                                <div class="invalid-feedback">กรุณาใส่รายละเอียดที่จอดรถหอพักของท่าน</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>ไวไฟ (WiFi)</h6>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect2" formControlName="con_wifi">
+                                    <option>มี</option>
+                                    <option>ไม่มี</option>
+                                </select>
+                                <div class="invalid-feedback">กรุณากรอกไวไฟ (WiFi)</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>เครื่องซักผ้า</h6>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect2" formControlName="con_washing">
+                                    <option>มี</option>
+                                    <option>ไม่มี</option>
+                                </select>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>เครื่องกดน้ำ</h6>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect2" formControlName="con_waterfilter">
+                                    <option>มี</option>
+                                    <option>ไม่มี</option>
+                                </select>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>คีย์การ์ด</h6>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect2" formControlName="con_keycard">
+                                    <option>มี</option>
+                                    <option>ไม่มี</option>
+                                </select>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>สัตว์เลี้ยง</h6>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect2" formControlName="con_pet">
+                                    <option>เลี้ยงได้</option>
+                                    <option>ห้ามเลี้ยง</option>
+                                </select>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">
+                                    <h6>กล้องวงจรปิด(CCTV)</h6>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect2" formControlName="con_securitycctv">
+                                    <option>มี</option>
+                                    <option>ไม่มี</option>
+                                </select>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputPassword4">
+                                    <h6>การสูบบุหรี่</h6>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect2" formControlName="con_smoking">
+                                    <option>สูบบุหรี่ได้</option>
+                                    <option>ห้ามสูบบุหรี่</option>
+                                </select>
+                                <div class="invalid-feedback">กรุณากรอกชื่อหอพัก</div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-lg btn-success" (click)="submitForm()">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ยืนยัน&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-lg btn-danger">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ยกเลิก&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </button>
+                        </div>
+                    </div>
+                </fieldset><br>
+            </form>
+        </div><br>
+    </div>
+</div>
