@@ -124,7 +124,7 @@ export class HomeMemberComponent implements OnInit {
     this.userShow.patchValue({
       dorm_id: this.data.dorm_id,
       id: '0',
-      deposit_status: 'Y',
+      deposit_status: 'ชำระแล้ว',
       mem_ref: this.datePipe.transform(new Date(), 'dd-MM-yyyy HH:mm:ss'),
       room_id: this.data.room_id,
       deposit: (30 / 100) * this.data.room_price,

@@ -142,6 +142,7 @@ export class UserSelectroomComponent implements OnInit {
     this.sendEmail(mockEmail, this.mockListSubject, name);
 
     this.router.navigate(['/user/reserInformation']);
+    window.location.reload();
   }
 
 

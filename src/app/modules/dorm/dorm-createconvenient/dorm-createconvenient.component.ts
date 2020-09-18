@@ -77,7 +77,7 @@ export class DormCreateconvenientComponent implements OnInit {
     } else { // case success
       console.log(this.createCon.value);
       console.log('LOG DATA FN() >>>submitForm<<<::', this.createCon.value);
-      this.router.navigate(['/dorm/manage']);
+      this.router.navigate(['/dorm']);
       // register
       this.shaerdService.saveCon(this.createCon.value).subscribe(
         (error) => console.log(error)
