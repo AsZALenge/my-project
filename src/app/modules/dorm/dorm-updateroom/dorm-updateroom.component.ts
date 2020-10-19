@@ -47,6 +47,7 @@ export class DormUpdateroomComponent implements OnInit {
   }
 
   async patchValueForm() {
+    debugger;
     // get pd_id in request parameter router
     let roomId = this.activatedroute.snapshot.paramMap.get("room_id");
     console.log('patchValueForm : room_id => ', roomId);

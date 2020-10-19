@@ -14,7 +14,7 @@ export class DormShowconvenComponent implements OnInit {
   dorm;
   dorm_id: string;
   con_id: string;
-  con;
+  con: Array<any>;
   res: FormGroup;
 
   constructor(
@@ -73,8 +73,9 @@ export class DormShowconvenComponent implements OnInit {
       console.log('LOGGGG getDormByuserId', res);
       this.dorm_id = res;
 
-      this.shaerdService.getConByDormId(this.dorm_id).subscribe((res) => {
+      this.shaerdService.getConByDormId(userId).subscribe((res) => {
         console.log('patchValueForm : Response => ', res);
+        this.con = res;
         // patch value to form
         this.showCon.patchValue({
           con_id: res.con_id,
@@ -96,9 +97,8 @@ export class DormShowconvenComponent implements OnInit {
   // save
   submitForm() {
     // debugger;
-    // this.showCon.patchValue({
-    //   dorm_id: this.dorm.dorm_id,
-    //   con_id: '0',
+    // // this.showCon.patchValue({
+    //   dorm_id: this.dorm_id
     // })
 
     // console.log('LOG DATA FN() ON invalid >>>submitForm valuevalue<<<::', this.showCon.value);
@@ -108,7 +108,7 @@ export class DormShowconvenComponent implements OnInit {
     // } else { // case success
     //   console.log(this.showCon.value);
     //   console.log('LOG DATA FN() >>>submitForm<<<::', this.showCon.value);
-    //   this.router.navigate(['/dorm/manage']);
+      this.router.navigate(['/dorm/updateCon']);
     //   // register
     //   this.shaerdService.saveCon(this.showCon.value).subscribe(
     //     (error) => console.log(error)
